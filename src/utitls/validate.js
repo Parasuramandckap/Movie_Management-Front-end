@@ -34,10 +34,10 @@ export const isPasswordValid = (password) => {
 export const isEmailValid = (email) => {
   const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
   switch (true) {
-    case !email.trim():
+    case !email.toLowerCase().trim():
       return "Email feild is required";
     case !emailRegex.test(email.toLowerCase()):
-      return "email not valide";
+      return "Email not valid";
   }
 };
  
@@ -55,7 +55,10 @@ export const calculateStrength = (password) => {
     }
 
     if (/[A-Z]/.test(password) ) {
-      score += 2;
+      score += 1;
+    }
+    if (/[a-z]/.test(password) ) {
+      score += 1;
     }
 
     if (/\d/.test(password)) {
