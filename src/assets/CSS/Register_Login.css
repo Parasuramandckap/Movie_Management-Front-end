@@ -1,5 +1,8 @@
-/* Body Styles */
-.body {
+/* register-container Styles */
+body{
+    overflow: hidden;
+}
+.register-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,6 +10,7 @@
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
+    
 }
 
 /* Container Styles */
@@ -128,8 +132,4 @@ small {
 
 .login a:hover {
     text-decoration: underline;
-}
-
-.text-input .required-field{
-    color: red;
 }
