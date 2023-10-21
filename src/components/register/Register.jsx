@@ -114,14 +114,14 @@ function Register() {
           <div className="text-input">
             <label>Full Name</label><br />
             <input type="text" id="userName" name="fullName" placeholder="Enter FullName"
-              onChange={handleChanges}
+              onChange={handleInputs}
             />
             <small id="">{error.fullName ? error.fullName : ""}</small>
           </div>
           <div className="text-input">
             <label>Email address</label><br />
             <input type="text" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="emailId"
-              onChange={handleChanges}
+              onChange={handleInputs}
             />
             <small id="" className={``}>
               {error.emailId ? error.emailId : ""}
@@ -131,7 +131,9 @@ function Register() {
           <div className="text-input">
             <label>Password</label><br />
             <input type="text" id="exampleInputPassword1" placeholder="Password" name="password"
-              onChange={handleChanges}
+              onFocus={handleFocus}
+              onBlur={handleBlur}
+              onChange={handleInputs}
             />
             <small id="">{error.password ? error.password : ""}</small>
             <ul

@@ -133,3 +133,17 @@ small {
 .login a:hover {
     text-decoration: underline;
 }
+
+.text-input {
+    position: relative;
+}
+.text-input .check-list{
+    background-color: white;
+    color: black;
+    position: absolute;
+    top: -50px;
+    left: -300px;
+    height: 100px;
+    list-style: none;
+    
+}
