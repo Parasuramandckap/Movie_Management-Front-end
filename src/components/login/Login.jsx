@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import {  notification } from 'antd';
 import { useNavigate } from "react-router-dom";
-
+import "../../assets/CSS/Register_Login.css";
+import loginImage from "../../assets/images/login.png";
+import  logo from "../../assets/images/logo.png"
 import { isEmailValid } from "../../utitls/validate";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
@@ -70,35 +72,82 @@ const Login = () => {
   };
 
   return (
-    <div className="container mt-4">
-    <form onSubmit={handleLogin} >
-      <div className="form-group">
-        <label htmlFor="password">Email Id:</label>
-        <input
-          type="text"
-          className="form-control"
-          id="email"
-          name="email"
-          value={userData.email}
+  //   <div className="container mt-4">
+  //   <form onSubmit={handleLogin} >
+  //     <div className="form-group">
+  //       <label htmlFor="password">Email Id:</label>
+  //       <input
+  //         type="text"
+  //         className="form-control"
+  //         id="email"
+  //         name="email"
+  //         value={userData.email}
+  //         onChange={handleInput}
+  //       />
+  //       <small>{error.emailId ? error.emailId : ""}</small>
+  //     </div>
+  //     <div className="form-group">
+  //       <label htmlFor="password">Password:</label>
+  //       <input
+  //         type="text"
+  //         className="form-control"
+  //         name="password"
+  //         id="password"
+  //         value={userData.password}
+  //         onChange={handleInput}
+  //       />
+  //       <small>{error.password ? error.password : ""}</small>
+  //     </div>
+  //     <button className="mt-2 btn btn-primary">Register</button>
+  //   </form>
+  // </div>
+
+  <div className="body">
+  <div className="container">
+    <div className="img">
+      <img src={loginImage} alt="Img" />
+    </div>
+    <form onSubmit={handleLogin} className="details">
+      <div className="logo-title">
+        <div className="logo-session">
+          <img src={logo} alt="logo" />
+          <h4>DCKAP <br />
+            Cinemas 360</h4>
+        </div>
+        <div className="title">
+          <h2>Welcome to DCKAP Cinema 360</h2>
+        </div>
+      </div>
+
+
+      <div className="text-input">
+        <label >Email address</label><br />
+        <input type="text" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"
           onChange={handleInput}
         />
-        <small>{error.emailId ? error.emailId : ""}</small>
+        <small >
+          {error.email ? error.email : ""}
+        </small>
       </div>
-      <div className="form-group">
-        <label htmlFor="password">Password:</label>
-        <input
-          type="text"
-          className="form-control"
-          name="password"
-          id="password"
-          value={userData.password}
+
+
+      <div className="text-input">
+        <label>Password</label><br />
+        <input type="text" name="password" id="exampleInputPassword1" placeholder="Password"
           onChange={handleInput}
         />
         <small>{error.password ? error.password : ""}</small>
       </div>
-      <button className="mt-2 btn btn-primary">Register</button>
+
+      <button type="submit" className="register">
+        Submit
+      </button>
+      <div className="login">
+        <a href="/">Go to Register</a>
+      </div>
     </form>
   </div>
+</div>
   );
 };
 
