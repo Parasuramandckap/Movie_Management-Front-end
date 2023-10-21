@@ -11,11 +11,10 @@ export function isFullNameValid(fullName) {
   }
 }
 
-
-
 export const isPasswordValid = (password) => {
   const lengthCheck = /.{8,}/;
   const numberCheck = /\d/;
+  const UpperCase = /[A-Z]/;
   const specialCharCheck = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/;
 
   switch (true) {
@@ -23,6 +22,8 @@ export const isPasswordValid = (password) => {
       return "Password is required";
     case !lengthCheck.test(password):
       return "Password must be at least 8 characters.";
+    case !UpperCase.test(password):
+      return "At least one uppercase letter";
     case !numberCheck.test(password):
       return "Password must contain at least one number.";
     case !specialCharCheck.test(password):
@@ -39,14 +40,30 @@ export const isEmailValid = (email) => {
       return "email not valide";
   }
 };
-/* 
+ 
 
 
- if (!/^[A-Z][a-z]*$/.test(firstName) ) {
-        return "first name first later uppercase";
-      }else if(!/^[A-Z][a-z]*$/.test(lastName)){
-        return "last name first later uppercase"
-      }else if(/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/.test(fullName)){
-        return "contains symbols";
-      }
-*/
+export const calculateStrength = (password) => {
+
+  const length = password.length;
+  let score = 0;
+
+    if (length >= 8) {
+      score += 1;
+    } else if (length >= 6) {
+      score += 1;
+    }
+
+    if (/[A-Z]/.test(password) ) {
+      score += 2;
+    }
+
+    if (/\d/.test(password)) {
+      score += 1;
+    }
+    if(/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/.test(password)){
+      score += 1;
+    }
+
+    return score;
+} 

@@ -47,16 +47,17 @@ const Login = () => {
           password: userData.password,
         })
         .then((responce) => {
-          
+        
           if (responce.data.success) {
             notification.success({
               message: "success",
               description: responce.data.message,
             });
 
+            console.log(responce);
             localStorage.setItem("token",responce.data.data);
-            let decode = jwtDecode(responce.data.data);
-            localStorage.setItem("user_details",JSON.stringify(decode.sub));
+            let loginUser = jwtDecode(responce.data.data);
+            localStorage.setItem("user_details",JSON.stringify(loginUser.sub));
             navigate("/home");
           } else {
             notification.error({
@@ -69,43 +70,35 @@ const Login = () => {
   };
 
   return (
-    <div className="login-page">
-      <form onSubmit={handleLogin}>
-        <div className="form-group">
-          <label htmlFor="exampleInputEmail1">Email address</label>
-          <input
-            type="text"
-            name="email"
-            className="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-            placeholder="Enter email"
-            onChange={handleInput}
-          />
-          <small id="emailHelp" className="form-text text-muted">
-            {error.email ? error.email : ""}
-          </small>
-        </div>
-        <div className="form-group">
-          <label htmlFor="exampleInputPassword1">Password</label>
-          <input
-            type="text"
-            name="password"
-            className="form-control"
-            id="exampleInputPassword1"
-            placeholder="Password"
-            onChange={handleInput}
-          />
-          <small>{error.password ? error.password : ""}</small>
-        </div>
-
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
-      </form>
-
-      <a href="/">Go to Register</a>
-    </div>
+    <div className="container mt-4">
+    <form onSubmit={handleLogin} >
+      <div className="form-group">
+        <label htmlFor="password">Email Id:</label>
+        <input
+          type="text"
+          className="form-control"
+          id="email"
+          name="email"
+          value={userData.email}
+          onChange={handleInput}
+        />
+        <small>{error.emailId ? error.emailId : ""}</small>
+      </div>
+      <div className="form-group">
+        <label htmlFor="password">Password:</label>
+        <input
+          type="text"
+          className="form-control"
+          name="password"
+          id="password"
+          value={userData.password}
+          onChange={handleInput}
+        />
+        <small>{error.password ? error.password : ""}</small>
+      </div>
+      <button className="mt-2 btn btn-primary">Register</button>
+    </form>
+  </div>
   );
 };
 
