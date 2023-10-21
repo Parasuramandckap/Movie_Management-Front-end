@@ -112,7 +112,7 @@ function Register() {
             </div>
           </div>
           <div className="text-input">
-            <label>Full Name</label><br />
+            <label>Full Name <span>*</span></label><br />
             <input type="text" id="userName" name="fullName" placeholder="Enter FullName"
               onChange={handleInputs}
             />
