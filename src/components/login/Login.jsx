@@ -121,7 +121,7 @@ const Login = () => {
 
 
       <div className="text-input">
-        <label >Email address</label><br />
+        <label >Email address <span className="required-field">*</span></label><br />
         <input type="text" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"
           onChange={handleInput}
         />
@@ -132,14 +132,14 @@ const Login = () => {
 
 
       <div className="text-input">
-        <label>Password</label><br />
+        <label>Password <span className="required-field">*</span></label><br />
         <input type="text" name="password" id="exampleInputPassword1" placeholder="Password"
           onChange={handleInput}
         />
         <small>{error.password ? error.password : ""}</small>
       </div>
 
-      <button type="submit" className="register">
+      <button type="submit" className="register" >
         Submit
       </button>
       <div className="login">
@@ -152,3 +152,5 @@ const Login = () => {
 };
 
 export default Login;
+
+

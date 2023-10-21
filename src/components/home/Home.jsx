@@ -30,9 +30,21 @@ export default function Home() {
   return (
     <div>
       <div>welcome to home  {userDetails.name}</div>
-      <div>
+      {/* <div>
         <button className="btn btn-primary" onClick={handleLogout}>Log out</button>
-      </div>
+      </div> */}
+
+<nav class="navbar navbar-dark bg-dark">
+
+</nav>
+
+<nav class="navbar navbar-dark bg-primary">
+
+</nav>
+
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+
+</nav>
     </div>
   );
 }

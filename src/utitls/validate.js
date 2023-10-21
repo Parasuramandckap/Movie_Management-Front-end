@@ -7,7 +7,7 @@ export function isFullNameValid(fullName) {
     case !/^[A-Z][a-z]*$/.test(fullName.split(" ")[1]):
       return "Last name must start with uppercase letter and not contain symbols";
     case /[^A-Za-z\s-']/.test(fullName):
-      return "special character not allowed in the full name";
+      return "Special character not allowed in the full name";
   }
 }
 
@@ -35,9 +35,9 @@ export const isEmailValid = (email) => {
   const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
   switch (true) {
     case !email.trim():
-      return "Email feild is required";
+      return "Email field is required";
     case !emailRegex.test(email.toLowerCase()):
-      return "email not valide";
+      return "Email not valid";
   }
 };
  

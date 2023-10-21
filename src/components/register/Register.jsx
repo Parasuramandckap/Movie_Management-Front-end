@@ -192,7 +192,7 @@ function Register() {
 
 
           <div className="text-input">
-            <label>Full Name</label><br />
+            <label>Full Name <span className="required-field">*</span></ label><br />
             <input type="text" id="userName" name="fullName" placeholder="Enter FullName"
               onChange={handleChanges}
             />
@@ -204,7 +204,7 @@ function Register() {
 
 
           <div className="text-input">
-            <label>Email address</label><br />
+            <label>Email address <span className="required-field">*</span></label><br />
             <input type="text" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="emailId"
               onChange={handleChanges}
             />
@@ -215,7 +215,7 @@ function Register() {
 
 
           <div className="text-input">
-            <label>Password</label><br />
+            <label>Password <span className="required-field">*</span></label><br />
             <input type="text" id="exampleInputPassword1" placeholder="Password" name="password"
               onChange={handleChanges}
             />
@@ -226,7 +226,7 @@ function Register() {
               {error.password ? error.password : ""}
             </small>
           </div>
-          <button type="submit" className="register">
+          <button type="submit" className="register" >
             Register
           </button>
           <div className="login">

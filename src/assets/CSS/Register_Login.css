@@ -7,7 +7,6 @@
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
-    
 }
 
 /* Container Styles */
@@ -26,14 +25,16 @@
 }
 
 .img img {
-    max-width: 100%;
-    height: auto;
+    max-width: 441px;
+    width: 100%;
+    /* height: 536px; */
 }
 
 /* Form Styles */
 .details {
     flex: 1;
     padding: 20px;
+    /* align-items: center; */
 }
 
 /* Logo Title Styles */
@@ -97,10 +98,7 @@
 /* Small Text (Validation Error) Styles */
 small {
     color: rgb(221, 72, 13);
-}
 
-.invisible {
-    display: block;
 }
 
 /* Register Button Styles */
@@ -130,4 +128,8 @@ small {
 
 .login a:hover {
     text-decoration: underline;
+}
+
+.text-input .required-field{
+    color: red;
 }
