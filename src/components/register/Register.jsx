@@ -1,9 +1,15 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../../assets/CSS/Register_Login.css";
-import loginImage from "../../assets/images/login.png";
-import logo from "../../assets/images/logo.png";
+// import "../../assets/CSS/Register_Login.css";
+
+// import loginImage from "../../assets/images/login.png";
+// import logo from "../../assets/images/logo.png";
+import logo from "../../assets/images/Frame 607.png";
+import banner from "../../assets/images/Group 7764.png";
+
+import "../../assets/CSS/style.css";
+
 import axios from "axios";
 import {
   isEmailValid,
@@ -93,95 +99,111 @@ function Register() {
   const handleBlur = () => setShowlist(false);
 
   return (
-    <div className="register-container">
-      <div className="container">
-        <div className="img">
-          <img src={loginImage} alt="Img" />
+    <div className="container">
+      <div className="left">
+        <img src={banner} alt="banner-image" />
+      </div>
+      <div className="right">
+        <div className="logo">
+          <img src={logo} alt="logo-image" />
         </div>
-        <form onSubmit={handleSubmit} className="details">
-          <div className="logo-title">
-            <div className="logo-session">
-              <img src={logo} alt="logo" />
-              <h4>
-                DCKAP <br />
-                Cinemas 360
-              </h4>
-            </div>
-            <div className="title">
-              <h2>Welcome to DCKAP Cinema 360</h2>
-            </div>
-          </div>
-          <div className="text-input">
-            <label>Full Name <span>*</span></label><br />
-            <input type="text" id="userName" name="fullName" placeholder="Enter FullName"
+        <h2>Welcome to DCKAP Cinema 360</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="group-1">
+            <label htmlFor="username">
+              Full Name <span className="required-symbole">*</span>
+            </label>
+            <input
+              type="text"
+              id="username"
+              name="fullName"
+              value={userData.fullName}
               onChange={handleInputs}
+              placeholder="Type here"
             />
-            <small id="">{error.fullName ? error.fullName : ""}</small>
+            <div className="error">
+              {error.fullName ? error.fullName : ""}
+            </div>
           </div>
-          <div className="text-input">
-            <label>Email address</label><br />
-            <input type="text" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="emailId"
+          <div className="group-2">
+            <label htmlFor="username">
+              Email id <span className="required-symbole">*</span>
+            </label>
+            <input
+              type="text"
+              id="username"
+              name="emailId"
+              value={userData.emailId}
               onChange={handleInputs}
+              placeholder="Type here"
             />
-            <small id="" className={``}>
-              {error.emailId ? error.emailId : ""}
-            </small>
+            <div className="error">{error.emailId ? error.emailId : ""}</div>
           </div>
-
-          <div className="text-input">
-            <label>Password</label><br />
-            <input type="text" id="exampleInputPassword1" placeholder="Password" name="password"
-              onFocus={handleFocus}
+          <div className="group-3">
+            <label htmlFor="password">
+              Password <span className="required-symbole">*</span>
+            </label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={userData.password}
               onBlur={handleBlur}
+              onFocus={handleFocus}
               onChange={handleInputs}
+              placeholder="Type here"
             />
-            <small id="">{error.password ? error.password : ""}</small>
-            <ul
-              className={` check-list mt-3 ${
-                showList ? "visiblie" : "invisible"
-              }`}
-            >
-              <li>
-                {userData.password.length >= 8
-                  ? "✅ Minimum 8 characters"
-                  : "❌ Minimum 8 characters"}
-              </li>
-              <li>
-                {/[A-Z]/.test(userData.password)
-                  ? "✅ Contains uppercase letters"
-                  : "❌ Contains uppercase letters"}
-              </li>
-              <li>
-                {/[a-z]/.test(userData.password)
-                  ? "✅ Contains lowercase letters"
-                  : "❌ Contains lowercase letters"}
-              </li>
-              <li>
-                {/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/.test(userData.password)
-                  ? "✅ At least one special letter"
-                  : "❌ At least one special letter"}
-              </li>
-              <li>
-                {/\d/.test(userData.password)? "✅ Contains numbers": "❌ Contains numbers"}
-              </li>
-            </ul>
-            <div
+            <div className="error">{error.password ? error.password : ""}</div>
+            <div className="requirements">
+              <ul
+                className={`check-list mt-3 `}
+                style={{ display: showList ? "block" : "none" }}
+              >
+                <li>
+                  {userData.password.length >= 8
+                    ? "✅ Minimum 8 characters"
+                    : "❌ Minimum 8 characters"}
+                </li>
+                <li>
+                  {/[A-Z]/.test(userData.password)
+                    ? "✅ Contains uppercase letters"
+                    : "❌ Contains uppercase letters"}
+                </li>
+                <li>
+                  {/[a-z]/.test(userData.password)
+                    ? "✅ Contains lowercase letters"
+                    : "❌ Contains lowercase letters"}
+                </li>
+                <li>
+                  {/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/.test(userData.password)
+                    ? "✅ At least one special letter"
+                    : "❌ At least one special letter"}
+                </li>
+                <li>
+                  {/\d/.test(userData.password)
+                    ? "✅ Contains numbers"
+                    : "❌ Contains numbers"}
+                </li>
+              </ul>
+            </div>
+            {/* <div
               className={`mt-2 progress progress-bar bg-${
                 strength >= 5 ? "success" : strength >= 3 ? "warning" : "danger"
               } ${showList ? "visible" : "invisible"}`}
               role="progressbar"
               style={{ width: `${(strength / 5) * 100}%` }}
-            >
-              {strength >= 5 ? "Strong" : strength >= 3 ? "Moderate" : "Weak"}
-            </div>
+            ></div> */}
           </div>
-          <button type="submit" className="register" >
-            Register
-          </button>
-          <div className="login">
-            <a href="/login">Already user login</a>
-          </div>
+          <button type="submit">Register</button>
         </form>
+        <div className="or">
+          <p>-or-</p>
+        </div>
+        <div className="exits-user">
+          <a href="/login">
+            Already user login <span className="arrow">&#8594;</span>
+          </a>
+        </div>
       </div>
     </div>
   );

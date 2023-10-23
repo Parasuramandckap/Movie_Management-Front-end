@@ -1,40 +1,44 @@
 import React, { useState } from "react";
 import { notification } from "antd";
 import { useNavigate } from "react-router-dom";
-import "../../assets/CSS/Register_Login.css";
-import loginImage from "../../assets/images/login.png";
-import logo from "../../assets/images/logo.png";
-import { isEmailValid } from "../../utitls/validate";
+import { isEmailValid,validateLoginPassword } from "../../utitls/validate";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
+
+import logo from "../../assets/images/Frame 607.png";
+import banner from "../../assets/images/Group 7764.png";
+import "../../assets/CSS/style.css";
 const Login = () => {
   const navigate = useNavigate();
   const [userData, setUsetdata] = useState({
-    email: "",
+    emailId: "",
     password: "",
   });
   const [error, setError] = useState({});
 
   const handleInput = (e) => {
     const { name, value } = e.target;
+ 
     setUsetdata({ ...userData, [name]: value });
 
     if (error[name]) delete error[name];
   };
+ 
+ 
 
   const validate = (userData) => {
     let error = {};
     let isValid = true;
 
-    if (isEmailValid(userData.email)) {
-      error.email = isEmailValid(userData.email);
+    if (isEmailValid(userData.emailId)) {
+      error.emailId = isEmailValid(userData.emailId);
       isValid = false;
     }
-    if (!userData.password.trim()) {
-      error.password = "password is required";
+    if(validateLoginPassword(userData.password)){
+      error.password = validateLoginPassword(userData.password);
       isValid = false;
     }
-
+   
     setError(error);
     return isValid;
   };
@@ -71,56 +75,103 @@ const Login = () => {
   };
 
   return (
-    <div className="register-container">
-      <div className="container">
-        <div className="img">
-          <img src={loginImage} alt="Img" />
+    //     <div className="register-container">
+    //       <div className="container">
+    //         <div className="img">
+    //           <img  alt="Img" />
+    //         </div>
+    //         <form onSubmit={handleLogin} className="details">
+    //           <div className="logo-title">
+    //             <div className="logo-session">
+    //               <img  alt="logo" />
+    //               <h4>
+    //                 DCKAP <br />
+    //                 Cinemas 360
+    //               </h4>
+    //             </div>
+    //             <div className="title">
+    //               <h2>Welcome to DCKAP Cinema 360</h2>
+    //             </div>
+    //           </div>
+
+    //       <div className="text-input">
+    //         <label >Email address</label><br />
+    //         <input type="text" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"
+    //           onChange={handleInput}
+    //         />
+    //         <small >
+    //           {error.email ? error.email : ""}
+    //         </small>
+    //       </div>
+
+    //       <div className="text-input">
+    //         <label>Password</label><br />
+    //         <input type="text" name="password" id="exampleInputPassword1" placeholder="Password"
+    //           onChange={handleInput}
+    //         />
+    //         <small>{error.password ? error.password : ""}</small>
+    //       </div>
+
+    //       <button type="submit" className="register">
+    //         Submit
+    //       </button>
+    //       <div className="login">
+    //         <a href="/">Go to Register</a>
+    //       </div>
+    //     </form>
+    //   </div>
+    // </div>
+    <div className="container">
+      <div className="left">
+        <img src={banner} alt="banner-image" />
+      </div>
+      <div className="right">
+        <div className="logo">
+          <img src={logo} alt="logo-image" />
         </div>
-        <form onSubmit={handleLogin} className="details">
-          <div className="logo-title">
-            <div className="logo-session">
-              <img src={logo} alt="logo" />
-              <h4>
-                DCKAP <br />
-                Cinemas 360
-              </h4>
-            </div>
-            <div className="title">
-              <h2>Welcome to DCKAP Cinema 360</h2>
-            </div>
+        <h2>Welcome to DCKAP Cinema 360</h2>
+        <form onSubmit={handleLogin}>
+          <div className="group-1">
+            <label htmlFor="emailId">
+              Email id <span className="required-symbole">*</span>
+            </label>
+            <input
+              type="text"
+              id="emailId"
+              name="emailId"
+              value={userData.emailId}
+              onChange={handleInput}
+              placeholder="Type here"
+            />
+            <div className="error">{error.emailId ? error.emailId : ""}</div>
           </div>
-
-      <div className="text-input">
-        <label >Email address</label><br />
-        <input type="text" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"
-          onChange={handleInput}
-        />
-        <small >
-          {error.email ? error.email : ""}
-        </small>
+          <div className="group-2">
+            <label htmlFor="password">
+              Password <span className="required-symbole">*</span>
+            </label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={userData.password}
+              onChange={handleInput}
+              placeholder="Type here"
+            />
+            <div className="error">{error.password ? error.password : ""}</div>
+          </div>
+          <button type="submit">Login</button>
+        </form>
+        <div className="or">
+          <p>-or-</p>
+        </div>
+        <div className="exits-user">
+          <a href="/">
+            Create a new Account <span className="arrow">&#8594;</span>
+          </a>
+        </div>
       </div>
-
-
-      <div className="text-input">
-        <label>Password</label><br />
-        <input type="text" name="password" id="exampleInputPassword1" placeholder="Password"
-          onChange={handleInput}
-        />
-        <small>{error.password ? error.password : ""}</small>
-      </div>
-
-      <button type="submit" className="register">
-        Submit
-      </button>
-      <div className="login">
-        <a href="/">Go to Register</a>
-      </div>
-    </form>
-  </div>
-</div>
+    </div>
   );
 };
 
 export default Login;
-
-

@@ -32,6 +32,7 @@ export const isPasswordValid = (password) => {
 };
 
 export const isEmailValid = (email) => {
+
   const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
   switch (true) {
     case !email.trim():
@@ -70,3 +71,10 @@ export const calculateStrength = (password) => {
 
     return score;
 } 
+
+
+export const validateLoginPassword = (email)=>{
+  switch(true){
+    case !email.trim():return "Password is required";
+  }
+}
