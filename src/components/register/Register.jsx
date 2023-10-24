@@ -5,6 +5,12 @@ import "../../assets/CSS/Register_Login.css";
 import logo from "../../assets/images/Frame 607.png";
 import banner from "../../assets/images/Group 7764.png";
 import axios from "axios";
+
+
+import { Icon } from 'react-icons-kit';
+import { eyeOff } from 'react-icons-kit/feather/eyeOff';
+import { eye } from 'react-icons-kit/feather/eye';
+
 import {
   isEmailValid,
   isPasswordValid,
@@ -91,6 +97,12 @@ function Register() {
 
   const handleFocus = () => setShowlist(true);
   const handleBlur = () => setShowlist(false);
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
 
   return (
     <div className="container">
@@ -137,8 +149,9 @@ function Register() {
             <label htmlFor="password">
               Password <span className="required-symbole">*</span>
             </label>
+            <div className="password-icon">
             <input
-              type="password"
+               type={showPassword ? 'text' : 'password'}
               id="password"
               name="password"
               value={userData.password}
@@ -147,6 +160,20 @@ function Register() {
               onChange={handleInputs}
               placeholder="Type here"
             />
+
+        <span
+          className="password-toggle"
+          onClick={togglePasswordVisibility}
+        >
+          {showPassword ? (
+            <Icon icon={eyeOff} size={20} />
+          ) : (
+            <Icon icon={eye} size={20} />
+          )}
+        </span>
+            </div>
+             
+
             <div className="error">{error.password ? error.password : ""}</div>
             <div className="requirements">
               <ul
@@ -204,3 +231,24 @@ function Register() {
 }
 
 export default Register;
+
+
+
+
+// import React from 'react';
+// import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
+
+// const App = () => {
+//   const [passwordVisible, setPasswordVisible] = React.useState(false);
+//   return (
+   
+     
+//       <Input.Password
+//         placeholder="Type here"
+//         iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
+//       />
+     
+
+//   );
+// };
+// export default App;
