@@ -36,7 +36,7 @@ export const isEmailValid = (email) => {
   const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
   switch (true) {
     case !email.trim():
-      return "Email feild is required";
+      return "Email field is required";
     case !emailRegex.test(email.toLowerCase()):
       return "Email not valid";
   }
