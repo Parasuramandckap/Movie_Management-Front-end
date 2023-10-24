@@ -80,7 +80,7 @@ input::placeholder{
   color: red;
   height: 20px;
   padding-top: 2px;
-  font-size: 10px;
+  font-size: 12px;
 }
 .right .logo {
   display: flex;
