@@ -1,153 +1,130 @@
-/* register-container Styles */
-body{
-    overflow: hidden;
-}
-.register-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: black;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap");
+*{
     margin: 0;
     padding: 0;
-    font-family: 'Poppins', sans-serif;
-    
+    box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: black;
+  font-family: "Poppins", sans-serif;
+  /* overflow-y: hidden; */
 }
 
-/* Container Styles */
 .container {
-    display: flex;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    color: white;
-}
-
-/* Image Styles */
-.img {
-    flex: 1;
-    text-align: center;
-}
-
-.img img {
-    max-width: 441px;
-    width: 100%;
-    /* height: 536px; */
-}
-
-/* Form Styles */
-.details {
-    flex: 1;
-    padding: 20px;
-    /* align-items: center; */
-}
-
-/* Logo Title Styles */
-.logo-title {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Logo Session Styles */
-.logo-session {
-    text-align: center;
-    display: flex;
-    gap: 10px;
-}
-
-.logo-session img {
-    width: 100px;
-    height: auto;
-}
-
-.logo-session h4 {
-    font-size: 18px;
-}
-
-/* Title Styles */
-.title {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.title h2 {
-    font-size: 24px;
-}
-
-/* Text Input Styles */
-.text-input {
-    /* display: flex;
-    flex-wrap: wrap;
-    gap: 25px; */
-    margin-bottom: 20px;
-    /* padding-bottom: 20px; */
-}
-
-.text-input label {
-    /* display: block; */
-    font-size: 16px;
-    /* margin-bottom: 5px; */
-}
-
-.text-input input {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: black;
-    color: #ffffff;
-}
-
-/* Small Text (Validation Error) Styles */
-small {
-    color: rgb(221, 72, 13);
+  display: flex;
+  max-width: 400px;
+  gap: 165px;
+  justify-content: center;
+  align-items: center;
 
 }
 
-/* Register Button Styles */
-.register {
-    background-color: rgb(255, 255, 255);
-    color: rgb(0, 0, 0);
-    padding: 10px 20px;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
-    width: 100%;
-    padding: 10px;
-    /* border: 1px solid #ccc; */
-    border-radius: 5px;
+.left {
+  background-size: cover;
+  background-position: center;
+  color: #fff;
 }
 
-/* Login Link Styles */
-.login a {
-
-    display: flex;
-    justify-content: center;
-    text-decoration: none;
-    color: #ffffff;
-    font-size: 16px;
-    padding-top: 10px;
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.login a:hover {
-    text-decoration: underline;
+.right h2 {
+  text-align: center;
+  color: white;
+  font-size: 24px;
+  padding-top: 24px;
 }
 
-.text-input {
+form {
+  display: flex;
+  flex-direction: column;
+  padding-top: 24px;
+}
+form .required-symbole {
+  color: red;
+}
+label {
+  color: white;
+  padding-bottom: 5px;
+  font-size: 16px;
+  line-height: 16px;
+  padding-top: 5px;
+}
+form input{
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  height: 36px;
+  width: 400px;
+  background-color: black;
+  color: white;
+  padding-left: 10px;
+  color: white;
+  border: 2px solid gray;
+}
+input::placeholder{
+    padding-left: 6px;
+}
+.error {
+  color: red;
+  height: 20px;
+  padding-top: 2px;
+  font-size: 10px;
+}
+.right .logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.right .or {
+  color: white;
+  text-align: center;
+}
+.right .exits-user {
+  text-align: center;
+}
+.right .exits-user a {
+  color: white;
+  text-decoration: none;
+}
+ button {
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #ffffff;
+  color: black;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+
+.group-3{
     position: relative;
 }
-.text-input .check-list{
-    background-color: white;
-    color: black;
-    position: absolute;
-    top: -50px;
-    left: -300px;
-    height: 140px;
-    list-style: none;
-    width: 290px;
-    padding-top: 10px;
-    border: 2px solid;
-    list-style: none;
+.group-3 .check-list{
+  background-color: white;
+  color: black;
+  position: absolute;
+  top: -50px;
+  left: -350px;
+  height: 150px;
+  list-style: none;
+  width: 290px;
+  padding-top: 10px;
+  border: 2px solid;
+  border-radius: 5px;
+  list-style: none;
+  padding-left: 17px;
 
 }

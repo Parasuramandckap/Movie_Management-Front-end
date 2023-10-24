@@ -4,10 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { isEmailValid,validateLoginPassword } from "../../utitls/validate";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
-
 import logo from "../../assets/images/Frame 607.png";
 import banner from "../../assets/images/Group 7764.png";
-import "../../assets/CSS/style.css";
+import "../../assets/CSS/Register_Login.css";
+
 const Login = () => {
   const navigate = useNavigate();
   const [userData, setUsetdata] = useState({

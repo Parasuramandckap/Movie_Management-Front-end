@@ -1,15 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import "../../assets/CSS/Register_Login.css";
-
-// import loginImage from "../../assets/images/login.png";
-// import logo from "../../assets/images/logo.png";
+import "../../assets/CSS/Register_Login.css";
 import logo from "../../assets/images/Frame 607.png";
 import banner from "../../assets/images/Group 7764.png";
-
-import "../../assets/CSS/style.css";
-
 import axios from "axios";
 import {
   isEmailValid,
