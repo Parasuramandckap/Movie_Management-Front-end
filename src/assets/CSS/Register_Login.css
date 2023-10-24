@@ -128,3 +128,97 @@ input::placeholder{
   padding-left: 17px;
 
 }
+
+
+
+/* home page styles */
+.home-page{
+  background-color: #000000;
+}
+
+
+
+/* Style the navbar */
+.navbar {
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+/* Style the logo */
+.logo img {
+  height: 50px;
+  width: auto;
+}
+
+/* Style the middle section with categories */
+.categories {
+  display: flex;
+  list-style: none;
+  /* padding: 0; */
+  margin-left: 185px;
+}
+
+.categories li {
+  padding-left: 20px;
+  padding-right: 32px;
+}
+
+.categories a {
+  text-decoration: none;
+  color: #fff;
+  padding-left: 6px;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Style the right side with profile and search */
+.right-side {
+  display: flex;
+  align-items: center;
+  margin-right: 90px;
+}
+.profile{
+  padding-left: 24px;
+}
+.profile a {
+  text-decoration: none;
+  color: #fff;
+  margin-right: 20px;
+}
+.search{
+  padding-left: 24px;
+}
+.search input {
+  padding: 5px;
+}
+.add-movie button{
+  font-family: "Poppins", sans-serif;
+  padding: 6px 16px 6px 16px;
+  border-radius: 4px;
+}
+
+
+/* curosel */
+.curosel{
+  padding-top: 19px;
+}
+.curosel .carousel-slide{
+  position: relative;
+  width: 100%;
+  height: 427px;
+}
+.curosel .carousel-slide img {
+  object-fit: cover;
+}
+
+.curosel .overlay-text {
+  position: absolute;
+  bottom: 20px; 
+  left: 20px;
+  background: rgba(0, 0, 0, 0.5); 
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+}
