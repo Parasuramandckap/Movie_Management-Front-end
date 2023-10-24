@@ -32,7 +32,6 @@ export default function Home() {
   return (
     <div className="home-page">
       <Navbar />
-      <Demo />
     </div>
     
  
