@@ -3,7 +3,8 @@ import { useNavigate } from "react-router";
 import axios from "axios";
 
 import Navbar from "./Navbar";
-import Demo from "./curosel";
+import Curosel from "./Curosel";
+import FeatureMovie from "./Feature_movie";
 export default function Home() {
   const [userDetails,setUserdetails] = useState({});
   const navigate = useNavigate();
@@ -32,6 +33,8 @@ export default function Home() {
   return (
     <div className="home-page">
       <Navbar />
+      <Curosel/>
+      <FeatureMovie />
     </div>
     
  
