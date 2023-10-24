@@ -127,12 +127,3 @@ input::placeholder{
   padding-left: 17px;
 
 }
-.password-icon {
-  position: relative;
-}
-.password-toggle {
-  color: #ffffff;
-  position: absolute;
-  right: 10px;
-  top: 5px;
-}
