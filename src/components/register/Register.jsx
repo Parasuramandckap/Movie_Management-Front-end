@@ -5,6 +5,12 @@ import "../../assets/CSS/Register_Login.css";
 import logo from "../../assets/images/Frame 607.png";
 import banner from "../../assets/images/Group 7764.png";
 import axios from "axios";
+
+
+import { Icon } from 'react-icons-kit';
+import { eyeOff } from 'react-icons-kit/feather/eyeOff';
+import { eye } from 'react-icons-kit/feather/eye';
+
 import {
   isEmailValid,
   isPasswordValid,
@@ -91,99 +97,102 @@ function Register() {
 
   const handleFocus = () => setShowlist(true);
   const handleBlur = () => setShowlist(false);
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
 
   return (
-    <div className="main-container">
-      <div className="container">
-        <div className="left">
-          <img src={banner} alt="banner-image" />
+    <div className="container">
+      <div className="left">
+        <img src={banner} alt="banner-image" />
+      </div>
+      <div className="right">
+        <div className="logo">
+          <img src={logo} alt="logo-image" />
         </div>
-        <div className="right">
-          <div className="logo">
-            <img src={logo} alt="logo-image" />
+        <h2>Welcome to DCKAP Cinema 360</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="group-1">
+            <label htmlFor="username">
+              Full Name <span className="required-symbole">*</span>
+            </label>
+            <input
+              type="text"
+              id="username"
+              name="fullName"
+              value={userData.fullName}
+              onChange={handleInputs}
+              placeholder="Type here"
+            />
+            <div className="error">
+              {error.fullName ? error.fullName : ""}
+            </div>
           </div>
-          <h2>Welcome to DCKAP Cinema 360</h2>
-          <form onSubmit={handleSubmit}>
-            <div className="group-1">
-              <label htmlFor="username">
-                Full Name <span className="required-symbole">*</span>
-              </label>
-              <input
-                type="text"
-                id="username"
-                name="fullName"
-                value={userData.fullName}
-                onChange={handleInputs}
-                placeholder="Type here"
-              />
-              <div className="error">
-                {error.fullName ? error.fullName : ""}
-              </div>
+          <div className="group-2">
+            <label htmlFor="username">
+              Email id <span className="required-symbole">*</span>
+            </label>
+            <input
+              type="text"
+              id="username"
+              name="emailId"
+              value={userData.emailId}
+              onChange={handleInputs}
+              placeholder="Type here"
+            />
+            <div className="error">{error.emailId ? error.emailId : ""}</div>
+          </div>
+          <div className="group-3">
+            <label htmlFor="password">
+              Password <span className="required-symbole">*</span>
+            </label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={userData.password}
+              onBlur={handleBlur}
+              onFocus={handleFocus}
+              onChange={handleInputs}
+              placeholder="Type here"
+            />
+            <div className="error">{error.password ? error.password : ""}</div>
+            <div className="requirements">
+              <ul
+                className={`check-list mt-3 `}
+                style={{ display: showList ? "block" : "none" }}
+              >
+                <li>
+                  {userData.password.length >= 8
+                    ? "✅ Minimum 8 characters"
+                    : "❌ Minimum 8 characters"}
+                </li>
+                <li>
+                  {/[A-Z]/.test(userData.password)
+                    ? "✅ Contains uppercase letters"
+                    : "❌ Contains uppercase letters"}
+                </li>
+                <li>
+                  {/[a-z]/.test(userData.password)
+                    ? "✅ Contains lowercase letters"
+                    : "❌ Contains lowercase letters"}
+                </li>
+                <li>
+                  {/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/.test(userData.password)
+                    ? "✅ At least one special letter"
+                    : "❌ At least one special letter"}
+                </li>
+                <li>
+                  {/\d/.test(userData.password)
+                    ? "✅ Contains numbers"
+                    : "❌ Contains numbers"}
+                </li>
+              </ul>
             </div>
-            <div className="group-2">
-              <label htmlFor="username">
-                Email id <span className="required-symbole">*</span>
-              </label>
-              <input
-                type="text"
-                id="emailId"
-                name="emailId"
-                value={userData.emailId}
-                onChange={handleInputs}
-                placeholder="Type here"
-              />
-              <div className="error">{error.emailId ? error.emailId : ""}</div>
-            </div>
-            <div className="group-3">
-              <label htmlFor="password">
-                Password <span className="required-symbole">*</span>
-              </label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                value={userData.password}
-                onBlur={handleBlur}
-                onFocus={handleFocus}
-                onChange={handleInputs}
-                placeholder="Type here"
-              />
-              <div className="error">
-                {error.password ? error.password : ""}
-              </div>
-              <div className="requirements">
-                <ul
-                  className={`check-list mt-3 `}
-                  style={{ display: showList ? "block" : "none" }}
-                >
-                  <li>
-                    {userData.password.length >= 8
-                      ? "✅ Minimum 8 characters"
-                      : "❌ Minimum 8 characters"}
-                  </li>
-                  <li>
-                    {/[A-Z]/.test(userData.password)
-                      ? "✅ Contains uppercase letters"
-                      : "❌ Contains uppercase letters"}
-                  </li>
-                  <li>
-                    {/[a-z]/.test(userData.password)
-                      ? "✅ Contains lowercase letters"
-                      : "❌ Contains lowercase letters"}
-                  </li>
-                  <li>
-                    {/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/.test(userData.password)
-                      ? "✅ At least one special letter"
-                      : "❌ At least one special letter"}
-                  </li>
-                  <li>
-                    {/\d/.test(userData.password)
-                      ? "✅ Contains numbers"
-                      : "❌ Contains numbers"}
-                  </li>
-                </ul>
-              </div>
-              {/* <div
+            {/* <div
               className={`mt-2 progress progress-bar bg-${
                 strength >= 5 ? "success" : strength >= 3 ? "warning" : "danger"
               } ${showList ? "visible" : "invisible"}`}
@@ -208,3 +217,24 @@ function Register() {
 }
 
 export default Register;
+
+
+
+
+// import React from 'react';
+// import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
+
+// const App = () => {
+//   const [passwordVisible, setPasswordVisible] = React.useState(false);
+//   return (
+   
+     
+//       <Input.Password
+//         placeholder="Type here"
+//         iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
+//       />
+     
+
+//   );
+// };
+// export default App;

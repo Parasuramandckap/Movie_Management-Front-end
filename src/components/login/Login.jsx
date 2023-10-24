@@ -8,6 +8,12 @@ import logo from "../../assets/images/Frame 607.png";
 import banner from "../../assets/images/Group 7764.png";
 import "../../assets/CSS/Register_Login.css";
 
+
+
+import { Icon } from 'react-icons-kit';
+import { eyeOff } from 'react-icons-kit/feather/eyeOff';
+import { eye } from 'react-icons-kit/feather/eye';
+
 const Login = () => {
   const navigate = useNavigate();
   const [userData, setUsetdata] = useState({
@@ -73,6 +79,11 @@ const Login = () => {
         });
     }
   };
+  const [showPassword, setShowPassword] = useState(false);
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
 
   return (
     <div className="main-container">
@@ -104,14 +115,26 @@ const Login = () => {
             <label htmlFor="password">
               Password <span className="required-symbole">*</span>
             </label>
+            <div className="password-icon">
             <input
-              type="password"
+               type={showPassword ? 'text' : 'password'}
               id="password"
               name="password"
               value={userData.password}
               onChange={handleInput}
               placeholder="Type here"
             />
+                <span
+          className="password-toggle"
+          onClick={togglePasswordVisibility}
+        >
+          {showPassword ? (
+            <Icon icon={eyeOff} size={20} />
+          ) : (
+            <Icon icon={eye} size={20} />
+          )}
+        </span>
+        </div>
             <div className="error">{error.password ? error.password : ""}</div>
           </div>
           <button type="submit">Login</button>
