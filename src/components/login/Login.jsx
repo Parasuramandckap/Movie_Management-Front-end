@@ -49,7 +49,7 @@ const Login = () => {
     if (validate(userData)) {
       axios
         .post("http://127.0.0.1:5000/login", {
-          email: userData.email,
+          email: userData.emailId,
           password: userData.password,
         })
         .then((responce) => {
@@ -75,53 +75,8 @@ const Login = () => {
   };
 
   return (
-    //     <div className="register-container">
-    //       <div className="container">
-    //         <div className="img">
-    //           <img  alt="Img" />
-    //         </div>
-    //         <form onSubmit={handleLogin} className="details">
-    //           <div className="logo-title">
-    //             <div className="logo-session">
-    //               <img  alt="logo" />
-    //               <h4>
-    //                 DCKAP <br />
-    //                 Cinemas 360
-    //               </h4>
-    //             </div>
-    //             <div className="title">
-    //               <h2>Welcome to DCKAP Cinema 360</h2>
-    //             </div>
-    //           </div>
-
-    //       <div className="text-input">
-    //         <label >Email address</label><br />
-    //         <input type="text" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"
-    //           onChange={handleInput}
-    //         />
-    //         <small >
-    //           {error.email ? error.email : ""}
-    //         </small>
-    //       </div>
-
-    //       <div className="text-input">
-    //         <label>Password</label><br />
-    //         <input type="text" name="password" id="exampleInputPassword1" placeholder="Password"
-    //           onChange={handleInput}
-    //         />
-    //         <small>{error.password ? error.password : ""}</small>
-    //       </div>
-
-    //       <button type="submit" className="register">
-    //         Submit
-    //       </button>
-    //       <div className="login">
-    //         <a href="/">Go to Register</a>
-    //       </div>
-    //     </form>
-    //   </div>
-    // </div>
-    <div className="container">
+    <div className="main-container">
+       <div className="container">
       <div className="left">
         <img src={banner} alt="banner-image" />
       </div>
@@ -170,6 +125,7 @@ const Login = () => {
           </a>
         </div>
       </div>
+    </div>
     </div>
   );
 };

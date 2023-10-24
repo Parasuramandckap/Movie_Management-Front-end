@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import "../src/assets/CSS/Register_Login.css"
+// import "../src/assets/CSS/Register_Login.css";
 import reportWebVitals from './reportWebVitals';
 import AppRouter from './router/Router';
 
