@@ -11,6 +11,7 @@ import { Icon } from 'react-icons-kit';
 import { eyeOff } from 'react-icons-kit/feather/eyeOff';
 import { eye } from 'react-icons-kit/feather/eye';
 
+import "bootstrap/dist/css/bootstrap.css"
 import {
   isEmailValid,
   isPasswordValid,
@@ -73,7 +74,6 @@ function Register() {
         })
         .then(function (register) {
           if (register.data.success) {
-            // setError({...error,message:"Registeration successfully"});
 
             notification.success({
               message: "Success",
@@ -82,7 +82,6 @@ function Register() {
 
             navigate("/login");
           } else {
-            // setError({...error,message:register.data.message});
             notification.error({
               message: "Error",
               description: register.data.message,
@@ -115,11 +114,12 @@ function Register() {
           <img src={logo} alt="logo-image" />
         </div>
         <h2>Welcome to DCKAP Cinema 360</h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="from-container">
           <div className="group-1">
             <label htmlFor="username">
               Full Name <span className="required-symbole">*</span>
             </label>
+            <br />
             <input
               type="text"
               id="username"
@@ -136,6 +136,7 @@ function Register() {
             <label htmlFor="username">
               Email id <span className="required-symbole">*</span>
             </label>
+            <br />
             <input
               type="text"
               id="username"
@@ -172,8 +173,13 @@ function Register() {
           )}
         </span>
               </div> 
-            
-            <div className="error">{error.password ? error.password : ""}</div>
+            {error.password ?<div className="error">{error.password ? error.password : ""}</div>: <div
+              className={`mt-2 progress progress-bar bg-${
+                strength >= 5 ? "success" : strength >= 3 ? "warning" : "danger"
+              } ${strength ? "visible" : "invisible"}`}
+              role="progressbar"
+              style={{ width: `${(strength / 5) * 100}%` }}
+            ></div>}
             <div className="requirements">
               <ul
                 className={`check-list mt-3 `}
@@ -206,13 +212,6 @@ function Register() {
                 </li>
               </ul>
             </div>
-            {/* <div
-              className={`mt-2 progress progress-bar bg-${
-                strength >= 5 ? "success" : strength >= 3 ? "warning" : "danger"
-              } ${showList ? "visible" : "invisible"}`}
-              role="progressbar"
-              style={{ width: `${(strength / 5) * 100}%` }}
-            ></div> */}
             </div>
             <button type="submit">Register</button>
           </form>

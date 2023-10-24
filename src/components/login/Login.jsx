@@ -95,11 +95,12 @@ const Login = () => {
           </div>
 
           <h2>Welcome to DCKAP Cinema 360</h2>
-          <form onSubmit={handleLogin}>
+          <form onSubmit={handleLogin} className="from-container">
             <div className="group-1">
               <label htmlFor="emailId">
                 Email id <span className="required-symbole">*</span>
               </label>
+              <br />
               <input
                 type="text"
                 id="emailId"

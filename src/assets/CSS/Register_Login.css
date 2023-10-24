@@ -45,12 +45,12 @@
   padding-top: 24px;
 }
 
-form {
+.from-container {
   display: flex;
   flex-direction: column;
   padding-top: 24px;
 }
-form .required-symbole {
+.from-container .required-symbole {
   color: red;
 }
 label {
@@ -60,7 +60,7 @@ label {
   line-height: 16px;
   padding-top: 5px;
 }
-form input{
+.from-container input{
   width: 100%;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -90,6 +90,7 @@ input::placeholder{
 .right .or {
   color: white;
   text-align: center;
+  padding-top: 10px;
 }
 .right .exits-user {
   text-align: center;
@@ -98,7 +99,7 @@ input::placeholder{
   color: white;
   text-decoration: none;
 }
- button {
+ .from-container button {
   padding: 10px;
   margin: 10px 0;
   background-color: #ffffff;
