@@ -18,6 +18,8 @@ import {
   calculateStrength,
 } from "../../utitls/validate";
 import { notification } from "antd";
+
+//user registration function
 function Register() {
   const [userData, setUserdata] = useState({
     fullName: "",
