@@ -24,9 +24,13 @@
   list-style: none;
   padding: 0;
 }
-
+.categories .active{
+  color: white;
+}
 .categories li {
   margin-right: 20px;
+  color: gray;
+  cursor: pointer;
 }
 
 .categories a {
@@ -34,6 +38,8 @@
   color: #fff;
   padding-left: 6px;
   font-family: "Poppins", sans-serif;
+  color: gray;
+  cursor: pointer;
 }
 .right-side {
   display: flex;
@@ -137,6 +143,7 @@
   align-items: center;
   position: absolute;
   bottom: 0;
+ visibility: hidden;
 }
 .description .movie-details{
   color: white;
@@ -155,6 +162,15 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+}
+.movie-list{
+  cursor: pointer;
+}
+.movie-list .image:hover ~ .description{
+  visibility: visible;
+}
+.movie-list .description:hover{
+  visibility: visible;
 }
 .movie-list .favorate{
   position: absolute;

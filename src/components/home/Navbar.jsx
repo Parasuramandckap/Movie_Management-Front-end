@@ -1,20 +1,27 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { Button } from "antd";
 import logo from "../../assets/images/Home_page_logo.png"
 import "../../assets/CSS/Home.css"
 const Navbar = () => {
+    const [activeItem, setActiveItem] = useState('home');
+    const handleMenuItemClick = (category) => {
+        setActiveItem(category);
+      };
   return (
-    <div class="navbar">
-    <div class="left-side">
-        <div class="logo">
+    <div className="navbar">
+    <div className="left-side">
+        <div className="logo">
             <img src={logo} alt="Logo" />
         </div>
     </div>
-    <div class="middle">
-        <ul class="categories">
-            <li><i class="fa-solid fa-house"></i><a href="#">Home</a></li>
-            <li><i class="fa-solid fa-film"></i><a href="#">Movies</a></li>
+    <div className="middle">
+        <div className="categories">
+        <ul className="categories">
+            <li id="Home-icon" onClick={() => handleMenuItemClick('home')} className={activeItem === 'home' ? 'active' : ''}><i className="fa-solid fa-house"></i><a className={activeItem === 'home' ? 'active' : ''} onClick={() => handleMenuItemClick('home')}>Home</a></li>
+            <li id="Movie-icon" onClick={() => handleMenuItemClick('movie')} className={activeItem === 'movie' ? 'active' : ''} ><i className="fa-solid fa-film"></i><a onClick={() => handleMenuItemClick('movie')} className={activeItem === 'movie' ? 'active' : ''} >Movie</a></li>
         </ul>
+        </div>
+  
     </div>
     <div class="right-side">
         <div className="add-movie">
