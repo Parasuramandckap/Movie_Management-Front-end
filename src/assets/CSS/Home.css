@@ -12,7 +12,27 @@
 .navbar .middle {
   margin-left: 170px;
 }
+/* style the search bar */
+.search{
+  cursor: pointer;
+}
+.search-bar{
+  visibility: hidden;
+  width: 20px;
+  height: 35px;
+  margin-right: 10px;
+  transition: 0.5s;
 
+}
+.search-bar:focus{
+  outline: none;
+}
+.search:hover>.search-bar{
+  visibility: visible;
+  transition: 0.5s;
+  width: 200px;
+  height: 35px;
+}
 /* Style the logo */
 .logo img {
   height: 50px;
@@ -51,7 +71,7 @@
   color: #fff;
   margin-right: 20px;
 }
-.right-side .search {
+.right-side {
   padding-right: 90px;
 }
 
@@ -93,23 +113,15 @@
     line-height: 18px;
     font-family: "Poppins", sans-serif;
 }
-.overlay-text .like-unlike .like{
+.overlay-text .like-unlike .like,.unlike,.curosel-description{
     padding-top: 5px;
     font-size: 12px;
     line-height: 18px;
     font-family: "Poppins", sans-serif;
+    
 }
-.overlay-text .like-unlike .unlike{
-    padding-top: 5px;
-    font-size: 12px;
-    line-height: 18px;
-    font-family: "Poppins", sans-serif;
-}
-.overlay-text .curosel-description{
-    padding-top: 5px;
-    font-size: 12px;
-    line-height: 18px;
-    font-family: "Poppins", sans-serif;
+.overlay-text .like-unlike i{
+  padding-right: 5px;
 }
 .overlay-text .like-unlike {
   display: flex;

@@ -17,10 +17,10 @@ const Curosel = () => {
           <div className="overlay-text">
             <h2 className="movie-name">Loki </h2>
             <h3 className="add">Watch Trailer Now </h3>
-            <p className="hour">2 hr 55 min</p>
+            <p className="hour">2 hr 55 min <i class="fa-regular fa-circle-play"></i></p>
               <div className="like-unlike">
-              <p className="like">500k likes</p>
-            <p className="unlike">500k unlikes</p>
+              <p className="like"><i class="fa-solid fa-thumbs-up"></i>500k likes</p>
+              <p className="unlike"><i class="fa-regular fa-thumbs-down"></i>500k unlikes</p>
               </div>
             <p className="curosel-description">
               After the devastating events of the Infinity War, the universe is

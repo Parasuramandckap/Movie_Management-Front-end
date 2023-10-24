@@ -31,7 +31,8 @@ const Navbar = () => {
         <i class="fa-solid fa-user"></i>
         </div>
         <div class="search">
-            <i class="fa-solid fa-magnifying-glass"></i>
+            <input className="search-bar" type="search" />
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
         </div>
     </div>
 </div>
