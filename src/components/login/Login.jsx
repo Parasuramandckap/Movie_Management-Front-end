@@ -9,10 +9,7 @@ import banner from "../../assets/images/Group 7764.png";
 import "../../assets/CSS/Register_Login.css";
 
 
-
-// import { Icon } from 'react-icons-kit';
-// import { eyeOff } from 'react-icons-kit/feather/eyeOff';
-// import { eye } from 'react-icons-kit/feather/eye';
+//login
 
 const Login = () => {
   const navigate = useNavigate();
