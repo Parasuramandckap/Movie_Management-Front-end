@@ -1,0 +1,163 @@
+/* Style the navbar */
+.home-page {
+  background-color: black;
+}
+.navbar {
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+.navbar .middle {
+  margin-left: 170px;
+}
+
+/* Style the logo */
+.logo img {
+  height: 50px;
+  width: auto;
+}
+
+.categories {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+.categories li {
+  margin-right: 20px;
+}
+
+.categories a {
+  text-decoration: none;
+  color: #fff;
+  padding-left: 6px;
+  font-family: "Poppins", sans-serif;
+}
+.right-side {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.profile a {
+  text-decoration: none;
+  color: #fff;
+  margin-right: 20px;
+}
+.right-side .search {
+  padding-right: 90px;
+}
+
+/* curosel */
+.curosel {
+  padding-top: 19px;
+}
+.curosel .carousel-slide {
+  position: relative;
+  width: 100%;
+  height: 427px;
+}
+
+.curosel .carousel-slide img {
+  object-fit: cover;
+  padding-left: 115px;
+}
+
+.overlay-text {
+  position: absolute;
+  bottom: 95px;
+  left: 75px;
+  color: #fff;
+}
+.overlay-text .movie-name{
+    font-size: 16px;
+    line-height: 36px;
+    font-family: "Poppins", sans-serif;
+}
+.overlay-text .add{
+    font-size: 16px;
+    line-height: 18px;
+    font-family: "Poppins", sans-serif;
+    padding-top: 5px;
+}
+.overlay-text .hour{
+    padding-top: 5px;
+    font-size: 12px;
+    line-height: 18px;
+    font-family: "Poppins", sans-serif;
+}
+.overlay-text .like-unlike .like{
+    padding-top: 5px;
+    font-size: 12px;
+    line-height: 18px;
+    font-family: "Poppins", sans-serif;
+}
+.overlay-text .like-unlike .unlike{
+    padding-top: 5px;
+    font-size: 12px;
+    line-height: 18px;
+    font-family: "Poppins", sans-serif;
+}
+.overlay-text .curosel-description{
+    padding-top: 5px;
+    font-size: 12px;
+    line-height: 18px;
+    font-family: "Poppins", sans-serif;
+}
+.overlay-text .like-unlike {
+  display: flex;
+  gap: 10px;
+}
+.overlay-text .curosel-description {
+  width: 476px;
+}
+
+
+
+/* feature-movie */
+.fearure-movie{
+  padding-top: 46px;
+  padding-left: 90px;
+  background-color: black;
+}
+
+.fearure-movie .feature-title{
+  color: white;
+}
+.all-movie-list{
+  padding-top: 16px;
+}
+.all-movie-list .movie-list{
+  position: relative;
+}
+.description{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+}
+.description .movie-details{
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.description .reactions{
+  color: white;
+}
+.description .reactions span{
+  margin-left: 5px;
+}
+.all-movie-list{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.movie-list .favorate{
+  position: absolute;
+  top: 6px;
+  right: 6px;
+}
