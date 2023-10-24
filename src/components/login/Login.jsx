@@ -117,7 +117,7 @@ const Login = () => {
             </label>
             <div className="password-icon">
             <input
-               type='password'
+               type={showPassword ? 'text' : 'password'}
               id="password"
               name="password"
               value={userData.password}

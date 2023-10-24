@@ -105,8 +105,9 @@ function Register() {
 
 
   return (
+   
     <div className="main-container">
-          <div className="container">
+       <div className="container">
       <div className="left">
         <img src={banner} alt="banner-image" />
       </div>
