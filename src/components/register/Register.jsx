@@ -7,9 +7,9 @@ import banner from "../../assets/images/Group 7764.png";
 import axios from "axios";
 
 
-import { Icon } from 'react-icons-kit';
-import { eyeOff } from 'react-icons-kit/feather/eyeOff';
-import { eye } from 'react-icons-kit/feather/eye';
+// import { Icon } from 'react-icons-kit';
+// import { eyeOff } from 'react-icons-kit/feather/eyeOff';
+// import { eye } from 'react-icons-kit/feather/eye';
 
 import {
   isEmailValid,
@@ -105,7 +105,8 @@ function Register() {
 
 
   return (
-    <div className="container">
+    <div className="main-container">
+        <div className="container">
       <div className="left">
         <img src={banner} alt="banner-image" />
       </div>
