@@ -149,6 +149,7 @@ function Register() {
             <label htmlFor="password">
               Password <span className="required-symbole">*</span>
             </label>
+            <div className="password-icon">
             <input
               type="password"
               id="password"
@@ -159,6 +160,18 @@ function Register() {
               onChange={handleInputs}
               placeholder="Type here"
             />
+                      <span
+          className="password-toggle"
+          onClick={togglePasswordVisibility}
+        >
+          {showPassword ? (
+            <Icon icon={eyeOff} size={20} />
+          ) : (
+            <Icon icon={eye} size={20} />
+          )}
+        </span>
+              </div> 
+            
             <div className="error">{error.password ? error.password : ""}</div>
             <div className="requirements">
               <ul
@@ -212,7 +225,7 @@ function Register() {
           </div>
         </div>
       </div>
-    </div>
+
   );
 }
 

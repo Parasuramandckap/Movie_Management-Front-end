@@ -6,7 +6,7 @@ import AppRouter from './router/Router';
 
 // import "bootstrap/dist/css/bootstrap.css";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDgitOM.createRoot(document.getElementById('root'));
 root.render( <AppRouter />);
 
 // If you want to start measuring performance in your app, pass a function
