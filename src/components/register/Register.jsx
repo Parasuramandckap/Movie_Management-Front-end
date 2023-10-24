@@ -7,9 +7,9 @@ import banner from "../../assets/images/Group 7764.png";
 import axios from "axios";
 
 
-import { Icon } from 'react-icons-kit';
-import { eyeOff } from 'react-icons-kit/feather/eyeOff';
-import { eye } from 'react-icons-kit/feather/eye';
+// import { Icon } from 'react-icons-kit';
+// import { eyeOff } from 'react-icons-kit/feather/eyeOff';
+// import { eye } from 'react-icons-kit/feather/eye';
 
 import {
   isEmailValid,
@@ -97,15 +97,16 @@ function Register() {
 
   const handleFocus = () => setShowlist(true);
   const handleBlur = () => setShowlist(false);
-  const [showPassword, setShowPassword] = useState(false);
+  // const [showPassword, setShowPassword] = useState(false);
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
+  // const togglePasswordVisibility = () => {
+  //   setShowPassword(!showPassword);
+  // };
 
 
   return (
-    <div className="container">
+    <div className="main-container">
+          <div className="container">
       <div className="left">
         <img src={banner} alt="banner-image" />
       </div>

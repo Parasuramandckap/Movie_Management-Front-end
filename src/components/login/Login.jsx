@@ -10,9 +10,9 @@ import "../../assets/CSS/Register_Login.css";
 
 
 
-import { Icon } from 'react-icons-kit';
-import { eyeOff } from 'react-icons-kit/feather/eyeOff';
-import { eye } from 'react-icons-kit/feather/eye';
+// import { Icon } from 'react-icons-kit';
+// import { eyeOff } from 'react-icons-kit/feather/eyeOff';
+// import { eye } from 'react-icons-kit/feather/eye';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -79,10 +79,10 @@ const Login = () => {
         });
     }
   };
-  const [showPassword, setShowPassword] = useState(false);
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
+  // const [showPassword, setShowPassword] = useState(false);
+  // const togglePasswordVisibility = () => {
+  //   setShowPassword(!showPassword);
+  // };
 
 
   return (
@@ -117,14 +117,14 @@ const Login = () => {
             </label>
             <div className="password-icon">
             <input
-               type={showPassword ? 'text' : 'password'}
+               type='password'
               id="password"
               name="password"
               value={userData.password}
               onChange={handleInput}
               placeholder="Type here"
             />
-                <span
+                {/* <span
           className="password-toggle"
           onClick={togglePasswordVisibility}
         >
@@ -133,7 +133,7 @@ const Login = () => {
           ) : (
             <Icon icon={eye} size={20} />
           )}
-        </span>
+        </span> */}
         </div>
             <div className="error">{error.password ? error.password : ""}</div>
           </div>
