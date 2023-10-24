@@ -93,6 +93,7 @@ const Login = () => {
           <div className="logo">
             <img src={logo} alt="logo-image" />
           </div>
+
           <h2>Welcome to DCKAP Cinema 360</h2>
           <form onSubmit={handleLogin}>
             <div className="group-1">
@@ -144,6 +145,7 @@ const Login = () => {
             <a href="/">
               Create a new Account <span className="arrow">&#8594;</span>
             </a>
+
           </div>
         </div>
       </div>

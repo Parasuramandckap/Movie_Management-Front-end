@@ -125,7 +125,6 @@ input::placeholder{
   border-radius: 5px;
   list-style: none;
   padding-left: 17px;
-
 }
 .password-icon {
   position: relative;
@@ -136,3 +135,5 @@ input::placeholder{
   right: 10px;
   top: 5px;
 }
+
+

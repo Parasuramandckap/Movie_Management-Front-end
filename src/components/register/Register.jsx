@@ -105,6 +105,7 @@ function Register() {
 
 
   return (
+    <div className="main-container">
     <div className="container">
       <div className="left">
         <img src={banner} alt="banner-image" />
@@ -151,7 +152,7 @@ function Register() {
             </label>
             <div className="password-icon">
             <input
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               id="password"
               name="password"
               value={userData.password}
@@ -224,6 +225,7 @@ function Register() {
             </a>
           </div>
         </div>
+      </div>
       </div>
 
   );
