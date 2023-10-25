@@ -14,14 +14,14 @@ export default function Home() {
     setUserdetails(userDetails);
  
     //movie details fetch 
-    axios.get("http://127.0.0.1:5000/showmovie?limit=4&page=1", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((data) => {
-        console.log(data);
-      });
+    // axios.get("http://127.0.0.1:5000/showmovie?limit=4&page=1", {
+    //     headers: {
+    //       Authorization: `Bearer ${token}`,
+    //     },
+    //   })
+    //   .then((data) => {
+    //     console.log(data);
+    //   });
   }, []);
 
   const handleLogout = () =>{
