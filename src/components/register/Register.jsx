@@ -166,9 +166,9 @@ function Register() {
           onClick={togglePasswordVisibility}
         >
           {showPassword ? (
-            <Icon icon={eyeOff} size={20} />
-          ) : (
             <Icon icon={eye} size={20} />
+          ) : (
+            <Icon icon={eyeOff} size={20} />
           )}
         </span>
               </div> 
@@ -233,23 +233,3 @@ function Register() {
 
 export default Register;
 
-
-
-
-// import React from 'react';
-// import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
-
-// const App = () => {
-//   const [passwordVisible, setPasswordVisible] = React.useState(false);
-//   return (
-   
-     
-//       <Input.Password
-//         placeholder="Type here"
-//         iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
-//       />
-     
-
-//   );
-// };
-// export default App;
