@@ -66,15 +66,15 @@
   align-items: center;
   gap: 24px;
 }
-.profile a {
-  text-decoration: none;
-  color: #fff;
-  margin-right: 20px;
-}
+
 .right-side {
   padding-right: 90px;
 }
-
+.right-side .add-movie .btn-primary{
+  background-color: white;
+  color: black;
+  border: none;
+}
 /* curosel */
 .curosel {
   padding-top: 19px;
