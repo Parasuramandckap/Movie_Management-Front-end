@@ -16,8 +16,8 @@ const Curosel = () => {
           <img src={loki} />
           <div className="overlay-text">
             <h2 className="movie-name">Loki </h2>
-            <h3 className="add">Watch Trailer Now </h3>
-            <p className="hour">2 hr 55 min <i class="fa-regular fa-circle-play"></i></p>
+            {/* <h3 className="add">Watch Trailer Now </h3> <i class="fa-regular fa-circle-play"></i>*/}
+            <p className="hour">2 hr 55 min </p>
               <div className="like-unlike">
               <p className="like"><i class="fa-solid fa-thumbs-up"></i>500k likes</p>
               <p className="unlike"><i class="fa-regular fa-thumbs-down"></i>500k unlikes</p>
