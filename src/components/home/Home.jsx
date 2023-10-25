@@ -6,12 +6,12 @@ import Navbar from "./Navbar";
 import Curosel from "./Curosel";
 import FeatureMovie from "./Feature_movie";
 export default function Home() {
-  const [userDetails,setUserdetails] = useState({});
+  const [movieList,setmovieList] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
     let token = localStorage.getItem("token");
     let userDetails = JSON.parse(localStorage.getItem("user_details"));
-    setUserdetails(userDetails);
+    
  
     //movie details fetch 
     axios.get("http://127.0.0.1:5000/showmovie?limit=4&page=1", {
@@ -19,22 +19,24 @@ export default function Home() {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((data) => {
-        console.log(data);
+      .then((movieList) => {
+        setmovieList(movieList.data.data);
       });
   }, []);
 
-  const handleLogout = () =>{
-    localStorage.removeItem("token");
-    localStorage.removeItem("user_details");
-    navigate("/login");
-  }
+  
+
+  // const handleLogout = () =>{
+  //   localStorage.removeItem("token");
+  //   localStorage.removeItem("user_details");
+  //   navigate("/login");
+  // }
 
   return (
     <div className="home-page">
       <Navbar />
       <Curosel/>
-      <FeatureMovie />
+      <FeatureMovie movieList={movieList}/>
     </div>
     
  
