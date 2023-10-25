@@ -129,9 +129,9 @@ const Login = () => {
                   onClick={togglePasswordVisibility}
                 >
                   {showPassword ? (
-                    <Icon icon={eyeOff} size={20} />
-                  ) : (
                     <Icon icon={eye} size={20} />
+                  ) : (
+                    <Icon icon={eyeOff} size={20} />
                   )}
                 </span>
               </div>

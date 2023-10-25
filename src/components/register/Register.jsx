@@ -162,8 +162,17 @@ function Register() {
               onChange={handleInputs}
               placeholder="Type here"
             />
-          <span className="password-toggle" onClick={togglePasswordVisibility}>
-          {showPassword ? (<Icon icon={eyeOff} size={20} />) : (<Icon icon={eye} size={20} />)}
+
+                      <span
+          className="password-toggle"
+          onClick={togglePasswordVisibility}
+        >
+          {showPassword ? (
+            <Icon icon={eye} size={20} />
+          ) : (
+            <Icon icon={eyeOff} size={20} />
+          )}
+
         </span>
               </div> 
             {error.password ?<div className="error">{error.password ? error.password : ""}</div>: <div
@@ -224,7 +233,5 @@ function Register() {
 }
 
 export default Register;
-
-
 
 
