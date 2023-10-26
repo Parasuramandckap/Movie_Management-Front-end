@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
 import axios from "axios";
 
 import Navbar from "./Navbar";
@@ -7,7 +6,7 @@ import Curosel from "./Curosel";
 import FeatureMovie from "./Feature_movie";
 export default function Home() {
   const [movieList,setmovieList] = useState([]);
-  const navigate = useNavigate();
+
   useEffect(() => {
     let token = localStorage.getItem("token");
     let userDetails = JSON.parse(localStorage.getItem("user_details"));
@@ -19,8 +18,8 @@ export default function Home() {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((data) => {
-        console.log(data);
+      .then((movieList) => {
+        setmovieList(movieList.data.data);
       });
   }, []);
 
@@ -32,11 +31,20 @@ export default function Home() {
   //   navigate("/login");
   // }
 
+const handleFavorate = (movie) => {
+   const movies = [...movieList];
+  const index = movies.indexOf(movie);
+  movies[index].is_favourite = movies[index].is_favourite === 0 ? 1:0;
+  setmovieList(movies);
+
+
+}
+
   return (
     <div className="home-page">
       <Navbar />
-      <Curosel/>
-      <FeatureMovie movieList={movieList}/>
+      <Curosel movieList={movieList}/>
+      <FeatureMovie movieList={movieList} handleFavorate={handleFavorate}/>
     </div>
     
  

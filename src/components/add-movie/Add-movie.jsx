@@ -212,7 +212,7 @@ import React, { useState } from 'react';
 import logo from '../../assets/images/Home_page_logo.png';
 import '../../assets/CSS/add-movie.css';
 import { DatePicker } from 'antd';
-import axios from 'axios';
+import axios, { formToJSON } from 'axios';
 
 const AddMovie = () => {
   const [movieName, setMovieName] = useState('');
@@ -224,11 +224,12 @@ const AddMovie = () => {
   const [movieDescription, setMovieDescription] = useState('');
 
   const [validationErrors, setValidationErrors] = useState({});
+  const [image,setImage] = useState({})
   let token = localStorage.getItem("token");
 
   const validateForm = () => {
     const errors = {};
-
+    let isValid = true;
     if (movieName.trim() === '') {
       errors.movieName = 'Movie Name is required';
     }
@@ -262,16 +263,68 @@ const AddMovie = () => {
     return Object.keys(errors).length === 0;
   };
 
-  const handleValidation = () => {
-  
-    
-    if (validateForm()) {
+  const changeHandler = (event) => {
 
-      console.log('Movie data is valid and can be submitted.');
+		// setImage(event.target.files);
+    // console.log(event.target.files[0]);
+    const {files} = event.target;
+    setImage(files[0]);
    
-      // You can submit the data or perform further actions here.
+	};
+ 
+
+  const handleValidation = (e) => {
+  
+    e.preventDefault()
+    if (validateForm()) {
+ 
+            // console.log('Movie data is valid and can be submitted.');
+      // axios.post("http://127.0.0.1:5000/createmovie",{
+      //   headers:{
+      //     Authorization:`Bearer ${token}`
+      //   },
+      //   body:{
+      //     name:movieName,
+      //     release_year:releaseYear,
+      //     duration:duration,
+      //     director_name:director,
+      //     star_rating:rating,
+      //     description:movieDescription,
+      //     genre:genre,
+      //     is_favourite:0,
+      //     image_path:image
+      //   }
+      // }).then(res=>{
+      //   console.log(res);
+      // })
+
+     
+      let data = JSON.stringify({
+        name: movieName,
+        release_year: releaseYear,
+        duration: duration,
+        director_name: director,
+        star_rating: rating,
+        description: movieDescription,
+        genre: genre,
+        image: image,
+        is_favourite: 0
+      });
+
+      axios.post("http://127.0.0.1:5000/createmovie",data,{
+        headers:{
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}` 
+        }
+      }).then(res=>{
+        console.log(res);
+      })
+
+
+
     }
   };
+
 
   return (
     <div className="main-containers">
@@ -283,19 +336,20 @@ const AddMovie = () => {
 
         <div className="movie-details">
           <h3>Movie Details</h3>
+          <form onSubmit={handleValidation} encType='multipart/form-data'>
           <label htmlFor="movieName">Movie Name</label>
           <input
             type="text"
             id="movieName"
             placeholder="Type here"
             value={movieName}
-            onChange={(e) => setMovieName(e.target.value)}
+            onChange={(e)=>setMovieName(e.target.value)}
           />
           {validationErrors.movieName && (
             <div className="error-message">{validationErrors.movieName}</div>
           )}
           <br />
-
+          <input type="file" accept="image/*"  name="image" onChange={changeHandler} />
           <label htmlFor="director">Director</label>
           <input
             type="text"
@@ -380,7 +434,8 @@ const AddMovie = () => {
             </div>
           )}
 
-          <button onClick={handleValidation}>Submit</button>
+          <button >Submit</button>
+          </form>
         </div>
       </div>
     </div>

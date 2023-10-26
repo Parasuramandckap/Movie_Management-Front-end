@@ -155,7 +155,7 @@
   position: absolute;
   bottom: 0;
   left: 15px;
- visibility: hidden;
+ /* visibility: hidden; */
 }
 .movie-list .description .movie-details .movie-name{
   color: white;
