@@ -8,28 +8,34 @@ const contentStyle = {
   textAlign: "center",
   background: "#000000",
 };
-const Curosel = ({movieList}) => {
+const Curosel = ({ movieList }) => {
   return (
     <div className="curosel">
-      <Carousel effect="fade">
-        {movieList.map((movie,index)=>{
-              return(
-                <div className="carousel-slide" style={contentStyle} key={index}>
-                <img src={loki} />
-                <div className="overlay-text">
-                  <h2 className="movie-name">{movie.name} </h2>
-                  {/* <h3 className="add">Watch Trailer Now </h3> <i class="fa-regular fa-circle-play"></i>*/}
-                  <p className="hour">{movie.duration} </p>
-                    <div className="like-unlike">
-                    {/* <p className="like"><i class="fa-solid fa-thumbs-up"></i>500k likes</p>
-                    <p className="unlike"><i class="fa-regular fa-thumbs-down"></i>500k unlikes</p> */}
-                    </div>
-                  <p className="curosel-description">
-                    {movie.description}
+      <Carousel effect="fade" autoplay>
+        {movieList.map((movie, index) => {
+          return (
+            <div className="carousel-slide" style={contentStyle} key={index}>
+              <img src={loki} />
+              <div className="overlay-text">
+                <h2 className="movie-name">{movie.name} </h2>
+                {/* <h3 className="add">Watch Trailer Now </h3> <i class="fa-regular fa-circle-play"></i>*/}
+                <p className="hour">{movie.duration} </p>
+                <div className="like-unlike">
+                  <p className="genre">
+                    {movie.genre}{" "}
+                    <i
+                      className="fa-solid fa-star star"
+                      style={{ color: "#ffdd00" }}
+                    ></i>
+                    {movie.star_rating}
                   </p>
+                  {/* <p className="like"><i class="fa-solid fa-thumbs-up"></i>500k likes</p>
+                    <p className="unlike"><i class="fa-regular fa-thumbs-down"></i>500k unlikes</p> */}
                 </div>
+                <p className="curosel-description">{movie.description}</p>
               </div>
-              )
+            </div>
+          );
         })}
       </Carousel>
     </div>

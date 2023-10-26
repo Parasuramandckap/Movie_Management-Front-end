@@ -210,7 +210,6 @@
 
 import React, { useState } from 'react';
 import logo from '../../assets/images/Home_page_logo.png';
-import '../../assets/CSS/add-movie.css';
 import { DatePicker } from 'antd';
 import axios, { formToJSON } from 'axios';
 
