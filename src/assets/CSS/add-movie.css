@@ -1,147 +1,108 @@
-/* .main-containers {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    background-color: #000000;
-  }
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap");
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.addmovie-main-containers {
+  width: 1280px;
+  height: 720px;
+  background-color: rgb(0, 0, 0);
+}
 
-  .con {
-    font-size: 24px;
-    margin: 10px 0;
-  }
-  
+.addmovie-main-containers .addmovie-header {
+  padding: 15px 20px;
+  /* display: flex; */
+}
 
-  h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-  
+.addmovie-add-movie {
+  color: white;
+  /* flex-basis: 50%; */
+  margin-left: 40%;
+  margin-top: -30px;
+}
 
-  
-  input[type="text"],
-  select,
-  textarea {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-  }
-  
-  select {
-    height: 40px;
-  }
-  
-  textarea {
-    height: 100px;
-  }
-  
-  button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 20px;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-   */
+.addmovie-details {
+  color: var(--Wight, #FFF);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  padding: 20px 80px;
+}
+
+.addmovie-line-one{
+  display: flex;
+  gap: 50px;
+}
+.addmovie-line-two{
+  display: flex;
+  gap: 50px;
+}
+
+.addmovie-details input{
+  width: 297px;
+height: 36px;
+flex-shrink: 0;
+border-radius: 4px;
+border: 1px solid #FFF;
+opacity: 0.5;
+}
 
 
-   /* Styles for the main container */
-.main-containers {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* height: 100vh; */
-    background-color: #555252;
-  }
-  
-  /* Styles for the inner container */
-  /* .container {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    max-width: 400px;
-  }
-   */
-  /* Styles for the header */
-  .header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .header img {
-    width: 40px; /* Adjust the image size as needed */
-    height: 40px; /* Adjust the image size as needed */
-    margin-right: 10px;
-  }
-  
-  .con {
-    font-size: 24px;
-  }
-  
-  /* Styles for movie details */
-  .movie-details h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-  
-  label {
-    display: block;
-    font-weight: bold;
-    margin-top: 10px;
-  }
-  
-  input[type="text"],
-  select {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  
-  textarea {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  
-  /* Styles for error messages */
-  .error-message {
-    color: red;
-    font-size: 14px;
-    margin-top: 5px;
-  }
-  
-  /* Styles for the submit button */
-  button {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    margin-top: 20px;
-    cursor: pointer;
-    font-size: 18px;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
+.addmovie-genre .addmovie-genre-select{
+  width: 297px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  border: 1px solid #FFF;
+  opacity: 0.5;
+}
+.addmovie-tex-area{
+  width: 939px;
+height: 112px;
+flex-shrink: 0;
+border-radius: 4px; 
+border: 1px solid #FFF;
+opacity: 0.5;
+}
+
+
+
+
+
+/* Error messages */
+.error-message {
+  color: red;
+  margin: 5px 0;
+}
+
+
+.all-inputs{
+  background-color: black;
+  color: white;
+  border: 1px solid grey;
+}
+.year-picker{
+  background-color: black;
+}
+.ant-picker:hover{
+  border-color: gray;
+}
+.ant-picker .ant-picker-input >input{
+  background-color: black;
+  color: white;
+  font-size: 14px;
+  font-weight: bolder;
+}
+.ant-picker-focused.ant-picker{
+  border-color: gray;
+    box-shadow: 0 0 0 2px rgba(5, 145, 255, 0.1);
+    outline: 0;
+}
+.addmovie-submit{
+  padding: 10px;
+  border-radius: 4px;
+  background-color: white;
+  color: black;
+  font-family: 'poppins ';
+}
