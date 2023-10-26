@@ -5,12 +5,13 @@ import "../../assets/CSS/Home.css";
 
 const FeatureMovie = ({ movieList, handleFavorate }) => {
 
-  
+  console.log();
   return (
     <div className="fearure-movie">
       <h2 className="feature-title">Featured today</h2>
       <div className="all-movie-list">
-        {movieList.map((movie, index) => {
+        {movieList.length === 0 ?<p>Movie is Empty</p>:movieList.map((movie, index) => {
+          
           return (
             <div
               className="movie-list"
