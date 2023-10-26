@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
+import { notification } from "antd";
 import Navbar from "./Navbar";
 import Curosel from "./Curosel";
 import FeatureMovie from "./Feature_movie";
 export default function Home() {
   const [movieList,setmovieList] = useState([]);
-
+  let token = localStorage.getItem("token");
   useEffect(() => {
-    let token = localStorage.getItem("token");
+    
     let userDetails = JSON.parse(localStorage.getItem("user_details"));
     
  
@@ -37,8 +37,35 @@ const handleFavorate = (movie) => {
   movies[index].is_favourite = movies[index].is_favourite === 0 ? 1:0;
   setmovieList(movies);
 
+  const headers = {
+    'Authorization': `Bearer ${token}`,
+    'Content-Type': 'application/json',
+
+  };
+
+  const updatedObj = {
+    name:movie.name,
+    director_name:movie.director_name,
+    duration:movie.duration,
+    description:movie.description,
+    genre:movie.genre,
+    image_path:movie.image_path,
+    is_favourite:movie.is_favourite,
+    release_year:movie.release_year,
+    star_rating:movie.star_rating,
+  }
+  axios
+  .put(`http://127.0.0.1:5000/update_movie/${movie._id}`, updatedObj, { headers })
+  .then((response) => {
+    console.log(response);
+  })
+  .catch((error) => {
+
+    console.error('Error:', error);
+  });
 
 }
+
 
   return (
     <div className="home-page">

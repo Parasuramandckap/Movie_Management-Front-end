@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import logo from '../../assets/images/Home_page_logo.png';
 import '../../assets/CSS/add-movie.css';
-
-import { DatePicker, Rate } from 'antd';
-import axios from 'axios';
-
+import { DatePicker } from 'antd';
+import axios, { formToJSON } from 'axios';
 
 const AddMovie = () => {
   const [movieName, setMovieName] = useState('');

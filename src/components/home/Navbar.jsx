@@ -125,16 +125,16 @@ const Navbar = () => {
         </div>
   
     </div>
-    <div class="right-side">
+    <div className="right-side">
         <div className="add-movie">
             <button className="btn btn-primary"  onClick={() => setOpen(true)}>Add Movie</button>
         </div>
-        <div class="profile">
-        <i class="fa-solid fa-user"></i>
+        <div className="profile">
+        <i className="fa-solid fa-user"></i>
         </div>
-        <div class="search">
+        <div className="search">
             <input className="search-bar" type="search" />
-            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <i className="fa-solid fa-magnifying-glass search-icon"></i>
         </div>
     </div>
 

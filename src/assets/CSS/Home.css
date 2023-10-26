@@ -210,3 +210,28 @@
 .movie-list .favorate:hover ~ .description{
   visibility: visible;
 }
+
+
+/* single movie */
+
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.image-left-side {
+  background-color: #3498db;
+  color: #fff;
+  text-align: center;
+  padding: 30px;
+  width: 40%;
+}
+
+.image-right-side {
+  background-color: #fff;
+  padding: 30px;
+  width: 60%;
+}
