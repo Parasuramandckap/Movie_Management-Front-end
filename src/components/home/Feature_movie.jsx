@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import leo from "../../assets/images/leo.png";
 import "../../assets/CSS/Home.css";
-import axios from "axios";
+
 
 const FeatureMovie = ({ movieList, handleFavorate }) => {
 
@@ -22,7 +22,7 @@ const FeatureMovie = ({ movieList, handleFavorate }) => {
               <div className="favorate" onClick={() => handleFavorate(movie)}>
                 <i
                   className={`${
-                    movie.is_favourite
+                    movie.is_favourite 
                       ? "fa-solid fa-heart"
                       : "fa-regular fa-heart"
                   }`}
@@ -32,7 +32,7 @@ const FeatureMovie = ({ movieList, handleFavorate }) => {
               <div className="description">
                 <div className="movie-details">
                   <h4 className="movie-name">{movie.name}</h4>
-                  <p className="movie-year">{movie.release_year.slice(0, 4)}</p>
+                  <p className="movie-year">{movie.release_year}</p>
                   <p className="rating">
                     <i
                       className="fa-solid fa-star star"

@@ -74,6 +74,7 @@
   background-color: white;
   color: black;
   border: none;
+  margin-left: 5px;
 }
 /* curosel */
 .curosel {
@@ -240,7 +241,7 @@
 /* model */
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap");
-*{
+/* *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -253,12 +254,12 @@
 
 .addmovie-main-containers .addmovie-header {
   padding: 15px 20px;
-  /* display: flex; */
+  display: flex;
 }
 
 .addmovie-add-movie {
   color: white;
-  /* flex-basis: 50%; */
+  flex-basis: 50%;
   margin-left: 40%;
   margin-top: -30px;
 }
@@ -306,13 +307,13 @@ border-radius: 4px;
 border: 1px solid #FFF;
 opacity: 0.5;
 }
-
+ */
 
 
 
 
 /* Error messages */
-.error-message {
+/* .error-message {
   color: red;
   margin: 5px 0;
 }
@@ -346,4 +347,60 @@ opacity: 0.5;
   background-color: white;
   color: black;
   font-family: 'poppins ';
+}
+.ant-modal .ant-modal-content{
+  width: 100%;
+}
+.ant-modal .ant-modal-content button{
+  background-color: white;
+  
+} */
+
+.ant-modal .ant-modal-content{
+  background-color: black;
+  border: 1px solid white;
+}
+.add-main-container{
+  color: white;
+
+}
+.add-navbar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.movie-details .top-inputs,.bottom-inputs{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.movie-details input{
+  border-radius: 4px;
+  background-color: black;
+  color: white;
+  border: 1px solid gray;
+}
+.movie-details input,progress{
+  width: 297px;
+  height: 36px;
+}
+.general-details .description{
+  width: 939px;
+  height: 112px;
+  border-radius: 4px;
+}
+.top-inputs .error{
+  height: 20px;
+}
+.add-movie-error{
+  height: 20px;
+  margin-bottom: 0;
+  color: red;
+}
+.ant-modal .ant-modal-footer .ant-btn+.ant-btn{
+  background-color: white;
+  color: black;
+}
+.general-details textarea{
+  padding: 5px;
 }

@@ -2,129 +2,170 @@ import { useState } from "react";
 import logo from "../../assets/images/Home_page_logo.png";
 import "../../assets/CSS/Home.css";
 
+import { Col, InputNumber, Row, Slider, Space, Modal ,Rate , Select,DatePicker ,notification} from "antd";
 
-import { Modal, DatePicker, Rate } from "antd";
 import axios from "axios";
 
-const Navbar = () => {
-  const [open, setOpen] = useState(false);
+const Navbar = ({handleAddMovie,handleLogout}) => {
 
-//     movieName: "",
-//     director: "",
-//     releaseYear: "",
-//     duration: "",
-//     genre: "",
-//     rating: "",
-//     movieDescription: "",
-//   });
+  const [open, setOpen] = useState(false);
   const [movieName, setMovieName] = useState("");
   const [director, setDirector] = useState("");
   const [releaseYear, setReleaseYear] = useState("");
-  const [duration, setDuration] = useState("");
+  const [hour, setHour] = useState(0);
+  const [minute, setMinute] = useState(0);
   const [genre, setGenre] = useState("");
-  const [rating, setRating] = useState("");
+  const [rating, setRating] = useState(0);
   const [movieDescription, setMovieDescription] = useState("");
   const [validationErrors, setValidationErrors] = useState({});
 
-  const validateForm = () => {
-    const errors = {};
+  const handleMovieName =(e)=>{
+    const {name} = e.target
+    
+    setMovieName(e.target.value)
+    if(validationErrors[name]) delete validationErrors[name];
+  }
+  const handleDirector =(e)=>{
+    const {name} = e.target
+    setDirector(e.target.value)
+    if(validationErrors[name]) delete validationErrors[name];
+  }
+  const handleYear =(date, dateString)=>{
+    setReleaseYear(dateString);
+    if(validationErrors["release_year"]) delete validationErrors["release_year"];
+  }
+  const handleHour =(hour)=>{
+    setHour(hour);
+    if(validationErrors["hour"]) delete validationErrors["hour"];
 
-    if (movieName.trim() === "") {
-      errors.movieName = "Movie Name is required";
+  }
+  const handleMinute =(Minute)=>{
+    setMinute(Minute);
+    if(validationErrors["minute"]) delete validationErrors["minute"];
+
+  }
+  const handleRatingChange = (rate)=>{
+    setRating(rate);
+    if(validationErrors["rating"]) delete validationErrors["rating"];
+
+  }
+  const handleGenre =(genre)=>{
+    setGenre(genre);
+    if(validationErrors["genre"]) delete validationErrors["genre"];
+
+  }
+  const handleDescription =(e)=>{
+    const {name} = e.target
+    setMovieDescription(e.target.value)
+    if(validationErrors[name]) delete validationErrors[name];
+
+  }
+
+  const validation =()=>{
+    let errorList = {};
+    let isValid = true;
+    if(movieName.trim() === ""){
+      errorList.movieName = "movie name is required";
+      isValid = false;
     }
-
-    if (director.trim() === "") {
-      errors.director = "Director is required";
+    if(director.trim() === ""){
+        errorList.diractor = "diractor name is required";
+        isValid = false
     }
-
-    if (!releaseYear) {
-      errors.releaseYear = "Release Year is required";
+    if(releaseYear.trim() === ""){
+      errorList.release_year = "Release year is required";
+      isValid = false
     }
-
-    if (duration.trim() === "") {
-      errors.duration = "Duration is required";
+    if(hour <=0){
+      errorList.hour = "Hour  is required";
+      isValid = false
     }
-
-    if (genre === "") {
-      errors.genre = "Genre is required";
+    if(minute<=0){
+      errorList.minute = "Minute  is required";
+      isValid = false
     }
-
-    if (rating === "") {
-      errors.rating = "Rating is required";
+    if(rating<=0){
+      errorList.rating = "Rating  is required";
+      isValid = false
     }
-
-    if (movieDescription.trim() === "") {
-      errors.movieDescription = "Movie Description is required";
+    if(genre.trim() === ""){
+      errorList.genre = "Genre  is required";
+      isValid = false
     }
+    if(movieDescription.trim() === ""){
+      errorList.description = "Description  is required";
+      isValid = false
+    }
+    setValidationErrors(errorList);
+    return isValid;
+  }
+  
+  const handleSubmit =()=>{
+    if(validation()){
+      const token = localStorage.getItem("token");
+      const formData = new FormData();
 
-    // if (!imageFile) {
-    //   errors.image = 'Image is required';
-    // }
-
-    setValidationErrors(errors);
-    return Object.keys(errors).length === 0;
-  };
-  const handleValidation = (e) => {
-    e.preventDefault();
-    if (validateForm()) {
- 
-     
-    //   const obj = {
-    //     name: movieName,
-    //     release_year: releaseYear,
-    //     duration: duration,
-    //     director_name: director,
-    //     genre: genre,
-    //     star_rating: rating,
-    //     description: movieDescription,
-    //     is_favourite: 0,
-    //     image_path: "",
-    //   };
-
-    const token = localStorage.getItem("token");
-    const formData = new FormData();
-
-    formData.append('name', movieName);
-    formData.append('release_year', releaseYear);
-    formData.append('duration', duration);
-    formData.append('director_name', director);
-    formData.append('genre', genre);
-    formData.append('star_rating', rating);
-    formData.append('description', movieDescription);
-    formData.append('is_favourite', 0);
-    const headers = {
+      formData.append('name', movieName);
+      formData.append('release_year', releaseYear);
+      formData.append('duration', `${hour}h ${minute}m`);
+      formData.append('director_name', director);
+      formData.append('genre', genre);
+      formData.append('star_rating', rating);
+      formData.append('description', movieDescription);
+      formData.append('is_favourite', 0);
+      // formData.append('image_path', "");
+      
+      const headers = {
         Authorization: `Bearer ${token}`,
         'Content-Type': 'multipart/form-data',
       };
-     
 
+      
+     
       axios
       .post('http://127.0.0.1:5000/createmovie', formData, { headers })
       .then((res) => {
-        console.log(res);
+        if(res.data.success){
+
+          let createdMovie = {
+            _id:res.data.data.movie_id,
+            director_name: director,
+            duration: `${hour}h ${minute}m`,
+            genre: genre,
+            is_favourite: 0,
+            name: movieName,
+            release_year: releaseYear,
+            star_rating: rating,
+            description:movieDescription
+          }
+
+          
+          handleAddMovie(createdMovie);
+            setOpen(false);
+           setMovieName("");
+            setDirector("");
+            setReleaseYear("");
+            setGenre("");
+            setMovieDescription("");
+            setHour(0);
+            setMinute(0);
+            setRating(0);
+        }
+        else{
+          
+          notification.error({
+            message: "Error",
+            description: res.data.message,
+          });
+
+        }
       })
       .catch((error) => {
         console.error(error);
       });
-
     }
-
     
-  };
-  const handleInputChange = (e) => {
-    const { id, value } = e.target;
-    const errors = { ...validationErrors };
-    console.log(value);
-    if (value.trim() === '') {
-      errors[id] = `${id} is required`;
-    }
-    else {
-      delete errors[id];
-    }
-    setValidationErrors(errors);
-
-  
-  };
+  }
 
   return (
     <div className="navbar">
@@ -143,7 +184,10 @@ const Navbar = () => {
       </div>
       <div className="right-side">
         <div className="add-movie">
-          <button className="btn btn-primary" onClick={() => setOpen(true)}>
+        <button className="btn btn-primary" onClick={handleLogout}>
+            Log Out
+          </button>
+          <button className="ml-2 btn btn-primary" onClick={() => setOpen(true)}>
             Add Movie
           </button>
         </div>
@@ -159,168 +203,152 @@ const Navbar = () => {
       <Modal
         centered
         open={open}
-        onOk={() => setOpen(false)}
+        onOk={handleSubmit}
+        okText={"save"}
         onCancel={() => setOpen(false)}
         width={1000}
       >
-        <div className="addmovie-main-containers">
-          <div className="addmovie-container">
-            <div className="addmovie-header">
-              <img src={logo} alt="addmovie-logo" />
-              <h3 className="addmovie-add-movie">Add Movie</h3>
+      
+        <div className="add-main-container">
+          <div className="add-navbar">
+            <div className="add-logo">
+              <img src={logo} alt="" />
             </div>
-            <form encType="multipart/form-data">
-              <div className="addmovie-details">
-                <h3 className="addmovie-title">Movie Details</h3>
-                <div className="addmovie-line-one">
-                  <div className="addmovie-movieName">
-                    <label htmlFor="movieName">Movie Name</label>
-                    <br />
-                    <input
-                      type="text"
-                      id="movieName"
-                      placeholder="Type here"
-                      className="all-inputs"
-                      name="movieName"
-                      value={movieName}
-                      onChange={(e)=>setMovieName(e.target.value)}
-                      //   onChange={(e) => {
-                      //     setMovieName(e.target.value);
-                      //     handleInputChange(e);
-                      //   }}
-                    />
-                    {validationErrors.movieName && (
-                      <div className="error-message">
-                        {validationErrors.movieName}
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="addmovie-directorName">
-                    <label htmlFor="director">Director Name</label> <br />
-                    <input
-                      type="text"
-                      id="director"
-                      placeholder="Type here"
-                      className="all-inputs"
-                      value={director}
-                      onChange={(e)=>setDirector(e.target.value)}
-                      //   onChange={(e) => {
-                      //     setDirector(e.target.value);
-                      //     handleInputChange(e);
-                      //   }}
-                    />
-                    {validationErrors.director && (
-                      <div className="error-message">
-                        {validationErrors.director}
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="addmovie-ReleaseYear">
-                    <label htmlFor="releaseYear">Release Year</label>
-                    <br />
-                    <DatePicker
-                      className="year-picker"
-                        onChange={(date, dateString) => setReleaseYear(dateString)}
-                      picker="year"
-           
-                      name="releaseYear"
-                    />{" "}
-                    <br />
-                    {validationErrors.releaseYear && (
-                      <div className="error-message">
-                        {validationErrors.releaseYear}
-                      </div>
-                    )}
-                  </div>
-                </div>
-
-                
-
-                 <div className="addmovie-line-two">
-                  <div className="addmovie-duration">
-                    <label htmlFor="duration">Duration</label> <br />
-                    <input
-                      type="text"
-                      id="duration"
-                      placeholder="Type here"
-                      className="all-inputs"
-                      value={duration}
-                        onChange={(e) => setDuration(e.target.value)}
-                    />
-                    {validationErrors.duration && (
-                      <div className="error-message">
-                        {validationErrors.duration}
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="addmovie-genre">
-                    <label htmlFor="genre">Genres</label> <br />
-                    <select
-                      name="genre"
-                      id="genre"
-                      value={genre}
-                        onChange={(e) => setGenre(e.target.value)}
-                      className="all-inputs addmovie-genre-select"
-                    >
-                      <option value="">Select Genre</option>
-                      <option value="Action">Action</option>
-                      <option value="Horror">Horror</option>
-                      <option value="Drama">Drama</option>
-                      <option value="Romance">Romance</option>
-                    </select>{" "}
-                    <br />
-                    {validationErrors.genre && (
-                      <div className="error-message">
-                        {validationErrors.genre}
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="addmovie-genre">
-                    <label htmlFor="rating">Rating</label> <br />
-                    <Rate
-                      name="rating"
-                      id="rating"
-                      value={rating}
-                        onChange={(e) => setRating(e)}
-                      className="all-inputs addmovie-rating"
-                    />{" "}
-                    <br />
-                    {validationErrors.rating && (
-                      <div className="error-message">
-                        {validationErrors.rating}
-                      </div>
-                    )}
-                  </div>
-                </div>
-
-                <div className="addmovie-des">
-                  <label htmlFor="movie-des">Movie Description</label> <br />
-                  <textarea
-                    id="movie-des"
-                    name="movie-des"
-                    rows="4"
-                    cols="50"
-                    className="all-inputs addmovie-tex-area"
-                    value={movieDescription}
-                    onChange={(e) => setMovieDescription(e.target.value)}
-                  />
-                  {validationErrors.movieDescription && (
-                    <div className="error-message">
-                      {validationErrors.movieDescription}
-                    </div>
-                  )}
-                </div> 
-
-                <button className="addmovie-submit" onClick={handleValidation}>
-                  Submit
-                </button>
-              </div>
-            </form>
+            <div className="add-heading">
+              <h2>Add Movie</h2>
+            </div>
           </div>
+
+          <form  encType="multipart/form-data">
+              <div className="body-container">
+                <div className="uploaded-img"></div>
+                <div className="right-cont">
+                  <div className="movie-details">
+                    <div className="top-inputs">
+                      <div>
+                        <label htmlFor="movie name">Movie Name</label>
+                        <br />
+                        <input type="text" placeholder="Type here" name="movieName" onChange={handleMovieName}/>
+                        <p className="add-movie-error">{validationErrors["movieName"]?validationErrors["movieName"]:""}</p>
+                      </div>
+
+                      <div>
+                        <label htmlFor="movie name">Director</label>
+                        <br />
+                        <input type="text" placeholder="Type here" name="diractor" onChange={handleDirector}/>
+                        <p className="add-movie-error">{validationErrors["diractor"]?validationErrors["diractor"]:""}</p>
+                      </div>
+
+                      <div>
+                        <label htmlFor="movie name">Release Year</label>
+                        <br />
+                        <DatePicker  picker="year"  onChange={handleYear}/>
+                        <p className="add-movie-error">{validationErrors["release_year"]?validationErrors["release_year"]:""}</p>
+                      </div>
+                    </div>
+                    <div className="bottom-inputs">
+                      <div>
+                        <label htmlFor="duration">Duration</label>
+                        <br />
+                        <Row className="hour-row">
+                          <Col span={12}>
+                            <Slider
+                              min={1}
+                              max={4}
+                              onChange={handleHour}
+                              value={
+                                typeof hour === "number" ? hour : 0
+                              }
+                            />
+                          </Col>
+                          <Col span={4}>
+                            <InputNumber
+                              min={1}
+                              max={4}
+                              style={{
+                                margin: "0 16px",
+                              }}
+                              value={hour}
+                              onChange={handleHour}
+                            />
+                          </Col>
+                        </Row>
+                        <p className=" add-movie-error">{validationErrors["hour"]?validationErrors["hour"]:""}</p>
+
+                          <Row>
+                          <Col span={12}>
+                            <Slider
+                              min={1}
+                              max={59}
+                              onChange={handleMinute}
+                              value={
+                                typeof minute === "number" ? minute : 0
+                              }
+                            />
+                          </Col>
+                          <Col span={4}>
+                            <InputNumber
+                              min={1}
+                              max={59}
+                              style={{
+                                margin: "0 16px",
+                              }}
+                              value={minute}
+                              onChange={handleMinute}
+                            />
+                          </Col>
+                          </Row>
+                          <p className=" add-movie-error">{validationErrors["minute"]?validationErrors["minute"]:""}</p>
+
+                      </div>
+                      <div>
+                        <label htmlFor="ratings">Rating</label>
+                        <br />
+                        <Rate className="add-movie-rating" value={rating} onChange={handleRatingChange}  />
+                        <p className="add-movie-error">{validationErrors["rating"]?validationErrors["rating"]:""}</p>
+                      </div>
+                      <div>
+                        <label htmlFor="genre">Genre</label>
+                        <br />
+                        <Space wrap>
+                        <Select
+                          defaultValue={genre}
+                          style={{
+                            width: 120,
+                          }}
+                          onChange={handleGenre}
+                          options={[
+                            {
+                              value: 'Action',
+                              label: 'action',
+                            },
+                            {
+                              value: 'Comedy',
+                              label: 'comedy',
+                            },
+                            {
+                              value: 'Drama',
+                              label: 'drama',
+                            }
+                          ]}
+                        />
+                        </Space>
+                        <p className="add-movie-error">{validationErrors["genre"]?validationErrors["genre"]:""}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="general-details">
+                    <label htmlFor="description">Description</label>
+                    <br />
+                    <textarea
+                      id=""
+                      className="description" name="description" onChange={handleDescription} placeholder="Type here"
+                    ></textarea>
+                    <p className="add-movie-error">{validationErrors["description"]?validationErrors["description"]:""}</p>
+                  </div>
+                </div>
+              </div>
+          </form>
         </div>
       </Modal>
     </div>

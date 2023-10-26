@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { notification } from "antd";
 import Navbar from "./Navbar";
 import Curosel from "./Curosel";
 import FeatureMovie from "./Feature_movie";
 export default function Home() {
   const [movieList,setmovieList] = useState([]);
   let token = localStorage.getItem("token");
+  const navigate = useNavigate();
   useEffect(() => {
     
-    let userDetails = JSON.parse(localStorage.getItem("user_details"));
     
  
     //movie details fetch 
@@ -20,16 +20,19 @@ export default function Home() {
       })
       .then((movieList) => {
         setmovieList(movieList.data.data);
+        
       });
   }, []);
 
   
 
-  // const handleLogout = () =>{
-  //   localStorage.removeItem("token");
-  //   localStorage.removeItem("user_details");
-  //   navigate("/login");
-  // }
+  const Logout = () =>{
+    localStorage.removeItem("token");
+    localStorage.removeItem("user_details");
+    navigate("/login");
+   
+
+  }
 
 const handleFavorate = (movie) => {
    const movies = [...movieList];
@@ -37,6 +40,7 @@ const handleFavorate = (movie) => {
   movies[index].is_favourite = movies[index].is_favourite === 0 ? 1:0;
   setmovieList(movies);
 
+ 
   const headers = {
     'Authorization': `Bearer ${token}`,
     'Content-Type': 'application/json',
@@ -66,10 +70,16 @@ const handleFavorate = (movie) => {
 
 }
 
+const handleAddMovie=(addMovie)=>{
+  // setmovieList([...movieList,addMovie]);
+  let addNewMovie = [...movieList,addMovie];
+  setmovieList(addNewMovie)
+  
+}
 
   return (
     <div className="home-page">
-      <Navbar />
+      <Navbar  handleAddMovie={handleAddMovie} handleLogout={Logout}/>
       <Curosel movieList={movieList}/>
       <FeatureMovie movieList={movieList} handleFavorate={handleFavorate}/>
     </div>
