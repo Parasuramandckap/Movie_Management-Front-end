@@ -20,8 +20,8 @@ export default function Home() {
   });
 
   useEffect(() => {
-    fetchData(pagination.current, pagination.pageSize);
-  }, [pagination.current, pagination.pageSize]);
+    fetchData(pagination.current, pagination.pageSize,searchMovie);
+  }, [pagination.current, pagination.pageSize,searchMovie]);
 
   const fetchData = async (page, pageSize) => {
     try {
