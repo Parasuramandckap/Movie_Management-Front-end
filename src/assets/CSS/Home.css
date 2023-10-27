@@ -13,21 +13,20 @@
   margin-left: 170px;
 }
 /* style the search bar */
-.search{
+.search {
   cursor: pointer;
 }
-.search-bar{
+.search-bar {
   visibility: hidden;
   width: 20px;
   height: 35px;
   margin-right: 10px;
   transition: 0.5s;
-
 }
-.search-bar:focus{
+.search-bar:focus {
   outline: none;
 }
-.search:hover>.search-bar{
+.search:hover > .search-bar {
   visibility: visible;
   transition: 0.5s;
   width: 200px;
@@ -44,7 +43,7 @@
   list-style: none;
   padding: 0;
 }
-.categories .active{
+.categories .active {
   color: white;
 }
 .categories li {
@@ -70,7 +69,7 @@
 .right-side {
   padding-right: 90px;
 }
-.right-side .add-movie .btn-primary{
+.right-side .add-movie .btn-primary {
   background-color: white;
   color: black;
   border: none;
@@ -97,31 +96,32 @@
   left: 75px;
   color: #fff;
 }
-.overlay-text .movie-name{
-    font-size: 16px;
-    line-height: 36px;
-    font-family: "Poppins", sans-serif;
+.overlay-text .movie-name {
+  font-size: 16px;
+  line-height: 36px;
+  font-family: "Poppins", sans-serif;
 }
-.overlay-text .add{
-    font-size: 16px;
-    line-height: 18px;
-    font-family: "Poppins", sans-serif;
-    padding-top: 5px;
+.overlay-text .add {
+  font-size: 16px;
+  line-height: 18px;
+  font-family: "Poppins", sans-serif;
+  padding-top: 5px;
 }
-.overlay-text .hour{
-    padding-top: 5px;
-    font-size: 12px;
-    line-height: 18px;
-    font-family: "Poppins", sans-serif;
+.overlay-text .hour {
+  padding-top: 5px;
+  font-size: 12px;
+  line-height: 18px;
+  font-family: "Poppins", sans-serif;
 }
-.overlay-text .like-unlike .like,.unlike,.curosel-description{
-    padding-top: 5px;
-    font-size: 12px;
-    line-height: 18px;
-    font-family: "Poppins", sans-serif;
-    
+.overlay-text .like-unlike .like,
+.unlike,
+.curosel-description {
+  padding-top: 5px;
+  font-size: 12px;
+  line-height: 18px;
+  font-family: "Poppins", sans-serif;
 }
-.overlay-text .like-unlike i{
+.overlay-text .like-unlike i {
   padding-right: 5px;
 }
 .overlay-text .like-unlike {
@@ -132,89 +132,85 @@
   width: 476px;
 }
 
-
-
 /* feature-movie */
-.fearure-movie{
+.fearure-movie {
   padding-top: 46px;
   padding-left: 90px;
   background-color: black;
 }
 
-.fearure-movie .feature-title{
+.fearure-movie .feature-title {
   color: white;
 }
-.all-movie-list{
+.all-movie-list {
   padding-top: 16px;
 }
-.all-movie-list .movie-list{
+.all-movie-list .movie-list {
   position: relative;
 }
-.movie-list .description{
+.movie-list .description {
   display: flex;
   align-items: center;
   position: absolute;
   bottom: 0;
   left: 15px;
- /* visibility: hidden; */
+  /* visibility: hidden; */
 }
-.movie-list .description .movie-details .movie-name{
+.movie-list .description .movie-details .movie-name {
   color: white;
   font-family: "Poppins", sans-serif;
   font-size: 14px;
   line-height: 18px;
 }
-.movie-list .description .movie-details .star{
+.movie-list .description .movie-details .star {
   padding-right: 5px;
 }
-.movie-list .description .movie-details p{
+.movie-list .description .movie-details p {
   margin-bottom: 0;
 }
-.movie-list .description .movie-details .movie-year{
+.movie-list .description .movie-details .movie-year {
   font-size: 10px;
   font-family: "Poppins", sans-serif;
   line-height: 12px;
 }
 
-.movie-list .description .reactions{
+.movie-list .description .reactions {
   color: white;
   display: flex;
   gap: 5px;
 }
-.movie-list .description .reactions span{
+.movie-list .description .reactions span {
   margin-left: 5px;
 }
-.all-movie-list{
+.all-movie-list {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
 }
-.movie-list{
+.movie-list {
   cursor: pointer;
 }
-.movie-list .image:hover ~ *{
+.movie-list .image:hover ~ * {
   visibility: visible;
-  transition: .1s;
+  transition: 0.1s;
 }
-.movie-list .description:hover{
+.movie-list .description:hover {
   visibility: visible;
 }
-.movie-list .favorate{
+.movie-list .favorate {
   position: absolute;
   top: 6px;
   right: 6px;
   visibility: hidden;
 }
-.movie-list .favorate:hover{
+.movie-list .favorate:hover {
   visibility: visible;
 }
-.movie-list .favorate:hover ~ .description{
+.movie-list .favorate:hover ~ .description {
   visibility: visible;
 }
-
 
 /* single movie */
-
 
 .image-container {
   display: flex;
@@ -236,7 +232,6 @@
   padding: 30px;
   width: 60%;
 }
-
 
 /* model */
 
@@ -309,9 +304,6 @@ opacity: 0.5;
 }
  */
 
-
-
-
 /* Error messages */
 /* .error-message {
   color: red;
@@ -356,51 +348,87 @@ opacity: 0.5;
   
 } */
 
-.ant-modal .ant-modal-content{
+.ant-modal .ant-modal-content {
   background-color: black;
   border: 1px solid white;
 }
-.add-main-container{
+.add-main-container {
   color: white;
-
 }
-.add-navbar{
+.add-navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.movie-details .top-inputs,.bottom-inputs{
+.movie-details .top-inputs,
+.bottom-inputs {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
-.movie-details input{
+.movie-details input {
   border-radius: 4px;
   background-color: black;
   color: white;
   border: 1px solid gray;
 }
-.movie-details input,progress{
+.movie-details input,
+progress {
   width: 297px;
   height: 36px;
 }
-.general-details .description{
-  width: 939px;
+.general-details .description {
+  width: 100%;
   height: 112px;
   border-radius: 4px;
+  background-color: black;
+  color: white;
 }
-.top-inputs .error{
+.top-inputs .error {
   height: 20px;
 }
-.add-movie-error{
+.add-movie-error {
   height: 20px;
   margin-bottom: 0;
   color: red;
 }
-.ant-modal .ant-modal-footer .ant-btn+.ant-btn{
+.ant-modal .ant-modal-footer .ant-btn + .ant-btn {
   background-color: white;
   color: black;
 }
-.general-details textarea{
+.general-details textarea {
   padding: 5px;
+}
+.body-container {
+  padding: 0px 97px;
+}
+.ant-picker-focused.ant-picker {
+  background-color: black;
+  border: 1px solid grey;
+}
+.ant-picker {
+  background-color: black;
+}
+.ant-picker .ant-picker-input > input {
+  color: white;
+}
+.ant-input-number {
+  background-color: black;
+}
+.ant-input-number .ant-input-number-input {
+  color: white;
+}
+.ant-input-number:hover {
+  border: 1px solid gray;
+}
+.ant-rate {
+  padding: 10px;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.ant-select-single .ant-select-selector{
+  background-color: black !important;
+  color: white !important;
+  border: 1px solid grey !important;
 }

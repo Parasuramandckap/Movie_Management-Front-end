@@ -206,7 +206,7 @@ const Navbar = ({handleAddMovie,handleLogout}) => {
         onOk={handleSubmit}
         okText={"save"}
         onCancel={() => setOpen(false)}
-        width={1000}
+        width={1370}
       >
       
         <div className="add-main-container">
@@ -217,6 +217,7 @@ const Navbar = ({handleAddMovie,handleLogout}) => {
             <div className="add-heading">
               <h2>Add Movie</h2>
             </div>
+            <div className="account"></div>
           </div>
 
           <form  encType="multipart/form-data">
@@ -304,10 +305,10 @@ const Navbar = ({handleAddMovie,handleLogout}) => {
                       <div>
                         <label htmlFor="ratings">Rating</label>
                         <br />
-                        <Rate className="add-movie-rating" value={rating} onChange={handleRatingChange}  />
+                        <Rate className="add-movie-rating" allowHalf  defaultValue={0.5} onChange={handleRatingChange}  />
                         <p className="add-movie-error">{validationErrors["rating"]?validationErrors["rating"]:""}</p>
                       </div>
-                      <div>
+                      <div className="genre-container">
                         <label htmlFor="genre">Genre</label>
                         <br />
                         <Space wrap>
