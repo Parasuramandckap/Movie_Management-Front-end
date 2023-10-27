@@ -113,7 +113,7 @@ const Navbar = ({handleAddMovie,handleLogout}) => {
       formData.append('star_rating', rating);
       formData.append('description', movieDescription);
       formData.append('is_favourite', 0);
-      // formData.append('image_path', "");
+      
       
       const headers = {
         Authorization: `Bearer ${token}`,
