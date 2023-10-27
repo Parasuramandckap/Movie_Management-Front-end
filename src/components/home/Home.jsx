@@ -20,7 +20,6 @@ export default function Home() {
       })
       .then((movieList) => {
         setmovieList(movieList.data.data);
-        
       });
   }, []);
 
@@ -74,6 +73,7 @@ const handleAddMovie=(addMovie)=>{
   // setmovieList([...movieList,addMovie]);
   let addNewMovie = [...movieList,addMovie];
   setmovieList(addNewMovie)
+  
   
 }
 

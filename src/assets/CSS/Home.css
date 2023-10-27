@@ -201,14 +201,14 @@
   position: absolute;
   top: 6px;
   right: 6px;
-  visibility: hidden;
+  /* visibility: hidden; */
 }
-.movie-list .favorate:hover {
+/* .movie-list .favorate:hover {
   visibility: visible;
 }
 .movie-list .favorate:hover ~ .description {
   visibility: visible;
-}
+} */
 
 /* single movie */
 

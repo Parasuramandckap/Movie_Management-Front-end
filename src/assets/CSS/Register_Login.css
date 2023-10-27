@@ -13,7 +13,7 @@
   height: 100vh;
   background-color: black;
   font-family: "Poppins", sans-serif;
-  /* overflow-y: hidden; */
+  overflow-y: hidden;
 }
 
 .container {
