@@ -6,6 +6,9 @@ import Curosel from "./Curosel";
 import FeatureMovie from "./Feature_movie";
 export default function Home() {
   const [movieList,setmovieList] = useState([]);
+  const [limit,setLimit] = useState(2);
+  const [page,setPage] = useState(1);
+  const [searchMovie,setSeachMovie] = useState("")
   let token = localStorage.getItem("token");
   const navigate = useNavigate();
   useEffect(() => {
@@ -13,7 +16,7 @@ export default function Home() {
     
  
     //movie details fetch 
-    axios.get("http://127.0.0.1:5000/showmovie?limit=4&page=1", {
+    axios.get(`http://127.0.0.1:5000/showmovie?limit=${limit}&page=${page}&search=${searchMovie}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -22,9 +25,11 @@ export default function Home() {
         setmovieList(movieList.data.data);
         
       });
-  }, []);
+  }, [searchMovie]);
 
-  
+  const handleSearch =(filterMovieName)=>{
+    setSeachMovie(filterMovieName);
+  }
 
   const Logout = () =>{
     localStorage.removeItem("token");
@@ -38,7 +43,7 @@ const handleFavorate = (movie) => {
    const movies = [...movieList];
   const index = movies.indexOf(movie);
   movies[index].is_favourite = movies[index].is_favourite === 0 ? 1:0;
-  setmovieList(movies);
+  
 
  
   const headers = {
@@ -53,7 +58,6 @@ const handleFavorate = (movie) => {
     duration:movie.duration,
     description:movie.description,
     genre:movie.genre,
-    image_path:movie.image_path,
     is_favourite:movie.is_favourite,
     release_year:movie.release_year,
     star_rating:movie.star_rating,
@@ -61,7 +65,7 @@ const handleFavorate = (movie) => {
   axios
   .put(`http://127.0.0.1:5000/update_movie/${movie._id}`, updatedObj, { headers })
   .then((response) => {
-    console.log(response);
+    setmovieList(movies);
   })
   .catch((error) => {
 
@@ -71,15 +75,15 @@ const handleFavorate = (movie) => {
 }
 
 const handleAddMovie=(addMovie)=>{
-  // setmovieList([...movieList,addMovie]);
   let addNewMovie = [...movieList,addMovie];
-  setmovieList(addNewMovie)
-  
+  setmovieList(addNewMovie);
+
+
 }
 
   return (
     <div className="home-page">
-      <Navbar  handleAddMovie={handleAddMovie} handleLogout={Logout}/>
+      <Navbar  handleAddMovie={handleAddMovie} handleLogout={Logout} handleSearch={handleSearch}/>
       <Curosel movieList={movieList}/>
       <FeatureMovie movieList={movieList} handleFavorate={handleFavorate}/>
     </div>

@@ -7,7 +7,7 @@ import { Col, InputNumber, Row, Slider, Space, Modal ,Rate , Select,DatePicker ,
 import axios from "axios";
 import moment from 'moment';
 
-const Navbar = ({handleAddMovie,handleLogout}) => {
+const Navbar = ({handleAddMovie,handleLogout,handleSearch}) => {
 
   const [open, setOpen] = useState(false);
   const [movieName, setMovieName] = useState("");
@@ -17,7 +17,7 @@ const Navbar = ({handleAddMovie,handleLogout}) => {
   const [minute, setMinute] = useState(0);
   const [genre, setGenre] = useState("");
   const [rating, setRating] = useState(0);
-  const [movieDescription, setMovieDescription] = useState("");
+  const [description, setDescription] = useState("");
   const [validationErrors, setValidationErrors] = useState({});
 
   const handleMovieName =(e)=>{
@@ -55,10 +55,12 @@ const Navbar = ({handleAddMovie,handleLogout}) => {
     if(validationErrors["genre"]) delete validationErrors["genre"];
   }
   const handleDescription =(e)=>{
-    const {name} = e.target
-    setMovieDescription(e.target.value)
-    if(validationErrors[name]) delete validationErrors[name];
+    const {name,value} = e.target
 
+    
+    setDescription(value)
+    if(validationErrors[name]) delete validationErrors[name];
+    
   }
 
  
@@ -93,7 +95,7 @@ const Navbar = ({handleAddMovie,handleLogout}) => {
       errorList.genre = "Genre  is required";
       isValid = false
     }
-    if(movieDescription.trim() === ""){
+    if(description.trim() === ""){
       errorList.description = "Description  is required";
       isValid = false
     }
@@ -109,14 +111,14 @@ const Navbar = ({handleAddMovie,handleLogout}) => {
       const token = localStorage.getItem("token");
       const formData = new FormData();
 
-      formData.append('name', movieName);
+      formData.append('name', movieName.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '));
       formData.append('release_year', releaseYear);
       formData.append('duration', `${hour}h ${minute}m`);
       formData.append('director_name', director);
       formData.append('genre', genre);
       formData.append('star_rating', rating);
-      formData.append('description', movieDescription);
       formData.append('is_favourite', 0);
+      formData.append("description",description);
       // formData.append('image_path', "");
       
       const headers = {
@@ -140,7 +142,7 @@ const Navbar = ({handleAddMovie,handleLogout}) => {
               name: movieName,
               release_year: releaseYear,
               star_rating: rating,
-              description:movieDescription
+              description:description,
             }
 
 
@@ -151,7 +153,7 @@ const Navbar = ({handleAddMovie,handleLogout}) => {
               setGenre("");
               setHour(0);
               setMinute(0);
-              setMovieDescription("");
+              setDescription("");
               setRating(0);
               setReleaseYear(null);
               handleAddMovie(createdMovie);
@@ -201,7 +203,7 @@ const Navbar = ({handleAddMovie,handleLogout}) => {
           <i className="fa-solid fa-user"></i>
         </div>
         <div className="search">
-          <input className="search-bar" type="search" />
+          <input className="search-bar" type="search" onChange={(e)=>handleSearch(e.target.value)}/>
           <i className="fa-solid fa-magnifying-glass search-icon"></i>
         </div>
       </div>
@@ -350,7 +352,7 @@ const Navbar = ({handleAddMovie,handleLogout}) => {
                     <br />
                     <textarea
                       id=""
-                      className="description" name="description" value={movieDescription} onChange={handleDescription} placeholder="Type here"
+                      className="description" name="description" value={description} onChange={handleDescription} placeholder="Type here"
                     ></textarea>
                     <p className="add-movie-error">{validationErrors["description"]?validationErrors["description"]:""}</p>
                   </div>
