@@ -5,6 +5,7 @@ import "../../assets/CSS/Home.css";
 import { Col, InputNumber, Row, Slider, Space, Modal ,Rate , Select,DatePicker ,notification} from "antd";
 
 import axios from "axios";
+import moment from 'moment';
 
 const Navbar = ({handleAddMovie,handleLogout}) => {
 
@@ -30,7 +31,7 @@ const Navbar = ({handleAddMovie,handleLogout}) => {
     setDirector(e.target.value)
     if(validationErrors[name]) delete validationErrors[name];
   }
-  const handleYear =(date, dateString)=>{
+  const handleYear =(date,dateString)=>{
     setReleaseYear(dateString);
     if(validationErrors["release_year"]) delete validationErrors["release_year"];
   }
@@ -52,7 +53,6 @@ const Navbar = ({handleAddMovie,handleLogout}) => {
   const handleGenre =(genre)=>{
     setGenre(genre);
     if(validationErrors["genre"]) delete validationErrors["genre"];
-
   }
   const handleDescription =(e)=>{
     const {name} = e.target
@@ -61,6 +61,7 @@ const Navbar = ({handleAddMovie,handleLogout}) => {
 
   }
 
+ 
   const validation =()=>{
     let errorList = {};
     let isValid = true;
@@ -100,7 +101,10 @@ const Navbar = ({handleAddMovie,handleLogout}) => {
     return isValid;
   }
   
+
+
   const handleSubmit =()=>{
+    console.log( );
     if(validation()){
       const token = localStorage.getItem("token");
       const formData = new FormData();
@@ -121,52 +125,54 @@ const Navbar = ({handleAddMovie,handleLogout}) => {
       };
 
       
-     
-      axios
-      .post('http://127.0.0.1:5000/createmovie', formData, { headers })
-      .then((res) => {
-        if(res.data.success){
+          
+        axios
+        .post('http://127.0.0.1:5000/createmovie', formData, { headers })
+        .then((res) => {
 
-          let createdMovie = {
-            _id:res.data.data.movie_id,
-            director_name: director,
-            duration: `${hour}h ${minute}m`,
-            genre: genre,
-            is_favourite: 0,
-            name: movieName,
-            release_year: releaseYear,
-            star_rating: rating,
-            description:movieDescription
+          if(res.data.success){
+            let createdMovie = {
+              _id:res.data.data.movie_id,
+              director_name: director,
+              duration: `${hour}h ${minute}m`,
+              genre: genre,
+              is_favourite: 0,
+              name: movieName,
+              release_year: releaseYear,
+              star_rating: rating,
+              description:movieDescription
+            }
+
+
+
+              setOpen(false);
+              setMovieName("");
+              setDirector("");
+              setGenre("");
+              setHour(0);
+              setMinute(0);
+              setMovieDescription("");
+              setRating(0);
+              setReleaseYear(null);
+              handleAddMovie(createdMovie);
+
           }
+          else{
 
-          
-          handleAddMovie(createdMovie);
-            setOpen(false);
-           setMovieName("");
-            setDirector("");
-            setReleaseYear("");
-            setGenre("");
-            setMovieDescription("");
-            setHour(0);
-            setMinute(0);
-            setRating(0);
-        }
-        else{
-          
-          notification.error({
-            message: "Error",
-            description: res.data.message,
-          });
+            notification.error({
+              message: "Error",
+              description: res.data.message,
+            });
 
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     }
     
   }
-
+  
   return (
     <div className="navbar">
       <div className="left-side">
@@ -229,21 +235,21 @@ const Navbar = ({handleAddMovie,handleLogout}) => {
                       <div>
                         <label htmlFor="movie name">Movie Name</label>
                         <br />
-                        <input type="text" placeholder="Type here" name="movieName" onChange={handleMovieName}/>
+                        <input type="text" placeholder="Type here" name="movieName" value={movieName} onChange={handleMovieName}/>
                         <p className="add-movie-error">{validationErrors["movieName"]?validationErrors["movieName"]:""}</p>
                       </div>
 
                       <div>
                         <label htmlFor="movie name">Director</label>
                         <br />
-                        <input type="text" placeholder="Type here" name="diractor" onChange={handleDirector}/>
+                        <input type="text" placeholder="Type here" name="diractor" value={director} onChange={handleDirector}/>
                         <p className="add-movie-error">{validationErrors["diractor"]?validationErrors["diractor"]:""}</p>
                       </div>
 
                       <div>
                         <label htmlFor="movie name">Release Year</label>
                         <br />
-                        <DatePicker  picker="year"  onChange={handleYear}/>
+                        <DatePicker  picker="year" value={releaseYear ? moment(releaseYear) : null}  onChange={handleYear}/>
                         <p className="add-movie-error">{validationErrors["release_year"]?validationErrors["release_year"]:""}</p>
                       </div>
                     </div>
@@ -305,7 +311,7 @@ const Navbar = ({handleAddMovie,handleLogout}) => {
                       <div>
                         <label htmlFor="ratings">Rating</label>
                         <br />
-                        <Rate className="add-movie-rating" allowHalf  defaultValue={0.5} onChange={handleRatingChange}  />
+                        <Rate className="add-movie-rating" value={rating} onChange={handleRatingChange}  />
                         <p className="add-movie-error">{validationErrors["rating"]?validationErrors["rating"]:""}</p>
                       </div>
                       <div className="genre-container">
@@ -313,7 +319,8 @@ const Navbar = ({handleAddMovie,handleLogout}) => {
                         <br />
                         <Space wrap>
                         <Select
-                          defaultValue={genre}
+                          
+                          value={genre}
                           style={{
                             width: 120,
                           }}
@@ -343,7 +350,7 @@ const Navbar = ({handleAddMovie,handleLogout}) => {
                     <br />
                     <textarea
                       id=""
-                      className="description" name="description" onChange={handleDescription} placeholder="Type here"
+                      className="description" name="description" value={movieDescription} onChange={handleDescription} placeholder="Type here"
                     ></textarea>
                     <p className="add-movie-error">{validationErrors["description"]?validationErrors["description"]:""}</p>
                   </div>
