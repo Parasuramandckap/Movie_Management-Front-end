@@ -58,10 +58,7 @@ const Login = () => {
         })
         .then((responce) => {
           if (responce.data.success) {
-            notification.success({
-              message: "success",
-              description: responce.data.message,
-            });
+
 
             console.log(responce);
             localStorage.setItem("token", responce.data.data);

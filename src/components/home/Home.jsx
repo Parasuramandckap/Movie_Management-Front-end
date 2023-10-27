@@ -4,139 +4,104 @@ import axios from "axios";
 import Navbar from "./Navbar";
 import Curosel from "./Curosel";
 import FeatureMovie from "./Feature_movie";
+import { Pagination } from 'antd';
 export default function Home() {
-  const [movieList,setmovieList] = useState([]);
-  const [limit,setLimit] = useState(2);
-  const [page,setPage] = useState(1);
-  const [searchMovie,setSeachMovie] = useState("")
-  let token = localStorage.getItem("token");
+  const [movieList, setMovieList] = useState([]);
+  const [searchMovie, setSearchMovie] = useState("");
+  const token = localStorage.getItem("token");
   const navigate = useNavigate();
+
+  const [pagination, setPagination] = useState({
+    current: 1,
+    pageSize: 2,
+    total: 0,
+  });
+
   useEffect(() => {
-    
-    
- 
-    //movie details fetch 
-    axios.get(`http://127.0.0.1:5000/showmovie?limit=${limit}&page=${page}&search=${searchMovie}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((movieList) => {
-        setmovieList(movieList.data.data);
-        
+    fetchData(pagination.current, pagination.pageSize,searchMovie);
+  }, [pagination.current, pagination.pageSize,searchMovie]);
+
+  const fetchData = async (page, pageSize) => {
+    try {
+      const headers = {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      };
+      const response = await fetch(`http://127.0.0.1:5000/showmovie?limit=${pageSize}&page=${page}&search=${searchMovie}`, { headers });
+      const result = await response.json();
+
+      console.log(result);
+      setMovieList(result.data);
+      setPagination({
+        ...pagination,
+        total: result.total_records,
       });
-  }, [searchMovie]);
+    } catch (error) {
+      console.error('Error fetching data: ', error);
+    }
+  };
 
-  const handleSearch =(filterMovieName)=>{
-    setSeachMovie(filterMovieName);
-  }
+  const handleSearch = (filterMovieName) => {
+    setSearchMovie(filterMovieName);
+  };
 
-  const Logout = () =>{
+  const Logout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user_details");
     navigate("/login");
-   
-
-  }
-
-const handleFavorate = (movie) => {
-   const movies = [...movieList];
-  const index = movies.indexOf(movie);
-  movies[index].is_favourite = movies[index].is_favourite === 0 ? 1:0;
-  
-
- 
-  const headers = {
-    'Authorization': `Bearer ${token}`,
-    'Content-Type': 'application/json',
-
   };
 
-  const updatedObj = {
-    name:movie.name,
-    director_name:movie.director_name,
-    duration:movie.duration,
-    description:movie.description,
-    genre:movie.genre,
-    is_favourite:movie.is_favourite,
-    release_year:movie.release_year,
-    star_rating:movie.star_rating,
-  }
-  axios
-  .put(`http://127.0.0.1:5000/update_movie/${movie._id}`, updatedObj, { headers })
-  .then((response) => {
-    setmovieList(movies);
-  })
-  .catch((error) => {
+  const handleFavorate = (movie) => {
+    const movies = [...movieList];
+    const index = movies.findIndex((m) => m._id === movie._id);
+    movies[index].is_favourite = movies[index].is_favourite === 0 ? 1 : 0;
 
-    console.error('Error:', error);
-  });
+    const headers = {
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    };
 
-}
+    const updatedObj = {
+      name: movie.name,
+      director_name: movie.director_name,
+      duration: movie.duration,
+      description: movie.description,
+      genre: movie.genre,
+      is_favourite: movie.is_favourite,
+      release_year: movie.release_year,
+      star_rating: movie.star_rating,
+    };
 
-const handleAddMovie=(addMovie)=>{
-  let addNewMovie = [...movieList,addMovie];
-  setmovieList(addNewMovie);
+    axios.put(`http://127.0.0.1:5000/update_movie/${movie._id}`, updatedObj, { headers })
+      .then((response) => {
+        console.log(response);
+        setMovieList(movies);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  };
 
+  const handleAddMovie = (addMovie) => {
+    const addNewMovie = [...movieList, addMovie];
+    setMovieList(addNewMovie);
+  };
 
-}
+  const handlePageChange = (page) => {
+    setPagination({ ...pagination, current: page });
+  };
 
   return (
     <div className="home-page">
-      <Navbar  handleAddMovie={handleAddMovie} handleLogout={Logout} handleSearch={handleSearch}/>
-      <Curosel movieList={movieList}/>
-      <FeatureMovie movieList={movieList} handleFavorate={handleFavorate}/>
+      <Navbar handleAddMovie={handleAddMovie} handleLogout={Logout} handleSearch={handleSearch} />
+      <Curosel movieList={movieList} />
+      <FeatureMovie movieList={movieList} handleFavorate={handleFavorate} />
+      <Pagination
+        current={pagination.current}
+        pageSize={pagination.pageSize}
+        total={pagination.total}
+        onChange={handlePageChange}
+      />
     </div>
-    
- 
   );
 }
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   // <div className="home-container">
-    //   <div>welcome to home  {userDetails.name}</div>
-
-    //   <div className="navbar-home">
-    //     <div>
-    //       <img src={logo} alt="" />
-    //     </div>
-    //     <div className="movies-catogery">
-
-    //     <div className="home">
-    //       <div className="home-icon"><i class="fa-solid fa-house"></i></div>
-    //       <div className="home-text">Home</div>
-    //     </div>
-    //     <div className="film">
-    //       <div className="film-logi"><i class="fa-solid fa-film"></i></div>
-    //       <div className="film-text">Movies</div>
-    //     </div>
-    //     <div className="tv"><i class="fa-solid fa-tv"></i>TV Showes</div>
-    //     </div>
-    //   </div>
-     
-    //   <div>
-       
-    //     <button className="btn btn-primary" onClick={handleLogout}>Log out</button>
-    //   </div>
-    // </div>
