@@ -5,6 +5,8 @@ import Navbar from "./Navbar";
 import Curosel from "./Curosel";
 import FeatureMovie from "./Feature_movie";
 import { Pagination } from 'antd';
+import 'antd/dist/antd.css'; // Import Ant Design CSS
+
 export default function Home() {
   const [movieList, setMovieList] = useState([]);
   const [searchMovie, setSearchMovie] = useState("");
@@ -13,29 +15,36 @@ export default function Home() {
 
   const [pagination, setPagination] = useState({
     current: 1,
-    pageSize: 2,
+    pageSize: 2, // Set the initial page size here
     total: 0,
   });
 
   useEffect(() => {
-    
-    
- 
-    //movie details fetch 
-    axios.get(`http://127.0.0.1:5000/showmovie?limit=${limit}&page=${page}&search=${searchMovie}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((movieList) => {
-        setmovieList(movieList.data.data);
-        
-      });
-  }, [searchMovie]);
+    fetchData(pagination.current, pagination.pageSize);
+  }, [pagination.current, pagination.pageSize]);
 
-  const handleSearch =(filterMovieName)=>{
-    setSeachMovie(filterMovieName);
-  }
+  const fetchData = async (page, pageSize) => {
+    try {
+      const headers = {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      };
+      const response = await fetch(`http://127.0.0.1:5000/showmovie?limit=${pageSize}&page=${page}&search=${searchMovie}`, { headers });
+      const result = await response.json();
+
+      setMovieList(result.data);
+      setPagination({
+        ...pagination,
+        total: result.total_records,
+      });
+    } catch (error) {
+      console.error('Error fetching data: ', error);
+    }
+  };
+
+  const handleSearch = (filterMovieName) => {
+    setSearchMovie(filterMovieName);
+  };
 
   const Logout = () => {
     localStorage.removeItem("token");
@@ -53,34 +62,35 @@ export default function Home() {
       'Content-Type': 'application/json',
     };
 
-  const updatedObj = {
-    name:movie.name,
-    director_name:movie.director_name,
-    duration:movie.duration,
-    description:movie.description,
-    genre:movie.genre,
-    is_favourite:movie.is_favourite,
-    release_year:movie.release_year,
-    star_rating:movie.star_rating,
-  }
-  axios
-  .put(`http://127.0.0.1:5000/update_movie/${movie._id}`, updatedObj, { headers })
-  .then((response) => {
-    setmovieList(movies);
-  })
-  .catch((error) => {
+    const updatedObj = {
+      name: movie.name,
+      director_name: movie.director_name,
+      duration: movie.duration,
+      description: movie.description,
+      genre: movie.genre,
+      is_favourite: movie.is_favourite,
+      release_year: movie.release_year,
+      star_rating: movie.star_rating,
+    };
 
-    console.error('Error:', error);
-  });
+    axios.put(`http://127.0.0.1:5000/update_movie/${movie._id}`, updatedObj, { headers })
+      .then((response) => {
+        console.log(response);
+        setMovieList(movies);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  };
 
-}
+  const handleAddMovie = (addMovie) => {
+    const addNewMovie = [...movieList, addMovie];
+    setMovieList(addNewMovie);
+  };
 
-const handleAddMovie=(addMovie)=>{
-  let addNewMovie = [...movieList,addMovie];
-  setmovieList(addNewMovie);
-
-
-}
+  const handlePageChange = (page) => {
+    setPagination({ ...pagination, current: page });
+  };
 
   return (
     <div className="home-page">
