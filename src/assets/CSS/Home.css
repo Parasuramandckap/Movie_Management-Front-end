@@ -17,21 +17,23 @@
   cursor: pointer;
 }
 .search-bar {
-  visibility: hidden;
+  /* visibility: hidden; */
   width: 20px;
   height: 35px;
   margin-right: 10px;
   transition: 0.5s;
+  width: 200px;
+  height: 35px;
 }
 .search-bar:focus {
   outline: none;
 }
-.search:hover > .search-bar {
+/* .search:hover > .search-bar {
   visibility: visible;
   transition: 0.5s;
   width: 200px;
   height: 35px;
-}
+} */
 /* Style the logo */
 .logo img {
   height: 50px;
