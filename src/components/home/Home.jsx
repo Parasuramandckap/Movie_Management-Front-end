@@ -5,7 +5,7 @@ import Navbar from "./Navbar";
 import Curosel from "./Curosel";
 import FeatureMovie from "./Feature_movie";
 import { Pagination } from 'antd';
-import 'antd/dist/antd.css'; // Import Ant Design CSS
+
 
 export default function Home() {
   const [movieList, setMovieList] = useState([]);
