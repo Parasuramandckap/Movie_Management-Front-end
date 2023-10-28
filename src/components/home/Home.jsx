@@ -15,7 +15,7 @@ export default function Home() {
 
   const [pagination, setPagination] = useState({
     current: 1,
-    pageSize: 2, // Set the initial page size here
+    pageSize: 6, // Set the initial page size here
     total: 0,
   });
 
@@ -23,7 +23,7 @@ export default function Home() {
     fetchData(pagination.current, pagination.pageSize,searchMovie);
   }, [pagination.current, pagination.pageSize,searchMovie]);
 
-  const fetchData = async (page, pageSize) => {
+  const fetchData = async (page, pageSize,searchMovie) => {
     try {
       const headers = {
         'Authorization': `Bearer ${token}`,
@@ -32,6 +32,7 @@ export default function Home() {
       const response = await fetch(`http://127.0.0.1:5000/showmovie?limit=${pageSize}&page=${page}&search=${searchMovie}`, { headers });
       const result = await response.json();
 
+      
       setMovieList(result.data);
       setPagination({
         ...pagination,
@@ -97,12 +98,14 @@ export default function Home() {
       <Navbar handleAddMovie={handleAddMovie} handleLogout={Logout} handleSearch={handleSearch} />
       <Curosel movieList={movieList} />
       <FeatureMovie movieList={movieList} handleFavorate={handleFavorate} />
-      <Pagination
-        current={pagination.current}
-        pageSize={pagination.pageSize}
-        total={pagination.total}
-        onChange={handlePageChange}
-      />
+      {movieList.length > 0 ?  <div className="pagination">
+          <Pagination
+            current={pagination.current}
+            pageSize={pagination.pageSize}
+            total={pagination.total}
+            onChange={handlePageChange}
+          />
+      </div> :""}
     </div>
   );
 }

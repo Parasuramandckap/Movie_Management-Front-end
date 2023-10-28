@@ -17,7 +17,7 @@ const Curosel = ({ movieList }) => {
             <div className="carousel-slide" style={contentStyle} key={index}>
               <img src={loki} />
               <div className="overlay-text">
-                <h2 className="movie-name">{movie.name} </h2>
+                <h2 className="movie-name">{movie.name.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')} </h2>
                 {/* <h3 className="add">Watch Trailer Now </h3> <i class="fa-regular fa-circle-play"></i>*/}
                 <p className="hour">{movie.duration} </p>
                 <div className="like-unlike">
