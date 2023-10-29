@@ -15,7 +15,7 @@ export default function Home() {
 
   const [pagination, setPagination] = useState({
     current: 1,
-    pageSize: 6, // Set the initial page size here
+    pageSize: 6, 
     total: 0,
   });
 
@@ -76,7 +76,6 @@ export default function Home() {
 
     axios.put(`http://127.0.0.1:5000/update_movie/${movie._id}`, updatedObj, { headers })
       .then((response) => {
-        console.log(response);
         setMovieList(movies);
       })
       .catch((error) => {

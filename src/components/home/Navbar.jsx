@@ -116,8 +116,9 @@ const Navbar = ({ handleAddMovie, handleLogout, handleSearch }) => {
     return isValid;
   };
 
+ 
   const handleSubmit = () => {
-    console.log();
+
     if (validation()) {
       const token = localStorage.getItem("token");
       const formData = new FormData();
@@ -130,8 +131,10 @@ const Navbar = ({ handleAddMovie, handleLogout, handleSearch }) => {
       formData.append("star_rating", rating);
       formData.append("is_favourite", 0);
       formData.append("image_path", image);
-
       formData.append("description", description);
+ 
+
+      
 
 
       const headers = {

@@ -1,14 +1,8 @@
 import React from "react";
-import leo from "../../assets/images/leo.png";
 import "../../assets/CSS/Home.css";
 
-
-const FeatureMovie = ({ movieList, handleFavorate}) => {
+const FeatureMovie = ({ movieList, handleFavorate }) => {
   
-
-
-  
- 
   return (
     <div className="fearure-movie">
       <h2 className="feature-title">Featured today</h2>
@@ -17,11 +11,13 @@ const FeatureMovie = ({ movieList, handleFavorate}) => {
           <p>Movie is Empty</p>
         ) : (
           movieList.map((movie, index) => {
-         
             return (
               <div className="movie-list" key={index}>
                 <div className="image">
-                  <img src={`http://127.0.0.1:5000/${movie.image_path}`} alt="" />
+                  <img
+                    src={`http://127.0.0.1:5000/${movie.image_path}`}
+                    alt=""
+                  />
                 </div>
                 <div className="favorate" onClick={() => handleFavorate(movie)}>
                   <i
@@ -35,7 +31,14 @@ const FeatureMovie = ({ movieList, handleFavorate}) => {
                 </div>
                 <div className="description">
                   <div className="movie-details">
-                    <h4 className="movie-name">{movie.name.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}</h4>
+                    <h4 className="movie-name">
+                      {movie.name
+                        .split(" ")
+                        .map(
+                          (word) => word.charAt(0).toUpperCase() + word.slice(1)
+                        )
+                        .join(" ")}
+                    </h4>
                     <p className="movie-year">{movie.release_year}</p>
                     <p className="rating">
                       <i
@@ -45,14 +48,9 @@ const FeatureMovie = ({ movieList, handleFavorate}) => {
                       {movie.star_rating}
                     </p>
                   </div>
-                  {/* <div className="reactions">
-                <span >
-                  <i className={`fa-regular fa-thumbs-up`}></i>
-                </span>
-                <span >
-                  <i className={`fa-regular fa-thumbs-down`}></i>
-                </span>
-              </div> */}
+
+                  <div className="reactions">
+                  </div>
                 </div>
               </div>
             );
@@ -60,8 +58,6 @@ const FeatureMovie = ({ movieList, handleFavorate}) => {
         )}
       </div>
       <br />
-   
-
     </div>
   );
 };
