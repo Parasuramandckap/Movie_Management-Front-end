@@ -328,9 +328,7 @@ progress {
   justify-items: center;
   padding-top: 10px;
 }
-.uploaded-img .image-upload .image-input{
-  display: none;
-}
+
 .image-upload .image-upload-btn{
   padding-top: 8px;
   font-family: "Poppins", sans-serif;

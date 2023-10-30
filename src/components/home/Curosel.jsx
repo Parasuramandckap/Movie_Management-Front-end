@@ -12,19 +12,12 @@ const contentStyle = {
 };
 
 const Curosel = ({ movieList }) => {
-  const [isReadMore, setReadMore] = useState(false);
-  const [maxLength, setMaxlength] = useState(200);
 
-  const toggleReadMore = () => {
-    setReadMore(!isReadMore);
-  };
   return (
     <div className="curosel">
       <Carousel effect="fade">
         {movieList.map((movie, index) => {
-          const textToShow = isReadMore
-            ? movie.description
-            : movie.description.slice(0, maxLength);
+     
 
           return (
             <div className="carousel-slide" style={contentStyle} key={index}>
@@ -50,12 +43,12 @@ const Curosel = ({ movieList }) => {
                   {/* <p className="like"><i class="fa-solid fa-thumbs-up"></i>500k likes</p>
                     <p className="unlike"><i class="fa-regular fa-thumbs-down"></i>500k unlikes</p> */}
                 </div>
-                <p className="curosel-description">{textToShow}</p>
-                {movie.description.length > maxLength && (
+                <p className="curosel-description">{movie.description}</p>
+                {/* {movie.description.length > maxLength && (
                   <a onClick={toggleReadMore}>
                     {isReadMore ? "Read Less" : "Read More"}
                   </a>
-                )}
+                )} */}
               </div>
             </div>
           );

@@ -191,12 +191,12 @@ const Navbar = ({ handleAddMovie, handleLogout, handleSearch }) => {
     setDescription("");
     setRating(0);
     setReleaseYear(null);
+    setValidationErrors({})
   };
 
   const handleImageUpload = (event) => {
     const [file] = event.target.files;
     setMovieImage(file);
-    
   };
 
   return (
@@ -262,20 +262,16 @@ const Navbar = ({ handleAddMovie, handleLogout, handleSearch }) => {
           <form encType="multipart/form-data">
             <div className="body-container">
               <div className="uploaded-img">
+              <input type="file" className="custom-file-input" name="file" id="" onChange={handleImageUpload} placeholder="file upload here" />
+
                 {/* <div className="image-upload">
-                  <input className="image-input"
-                    type="file"
-                    accept="image/*"
-                    onChange={handleImageUpload}
-            
-                  />
+                 
                   <div className="preview-image">
-                    <img src={uploadedImage}/>
+                    <img src={image}/>
                   </div>
                   <p className="image-upload-btn">Upload image</p>
                 </div> */}
                 
-                <input type="file" className="custom-file-input" name="file" id="" onChange={handleImageUpload} placeholder="file upload here" />
               </div>
               <div className="right-cont">
                 <h5>Movie Details</h5>

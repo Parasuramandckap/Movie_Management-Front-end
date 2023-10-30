@@ -97,7 +97,7 @@ export default function Home() {
       <Navbar handleAddMovie={handleAddMovie} handleLogout={Logout} handleSearch={handleSearch} />
       <Curosel movieList={movieList} />
       <FeatureMovie movieList={movieList} handleFavorate={handleFavorate} />
-      {movieList.length > 0 ?  <div className="pagination">
+      {movieList.length > 0 ? <div className="pagination">
           <Pagination
             current={pagination.current}
             pageSize={pagination.pageSize}
