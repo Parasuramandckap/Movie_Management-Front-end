@@ -24,6 +24,7 @@ const Curosel = ({ movieList }) => {
     <div className="curosel">
       <Carousel effect="fade">
         {movieList.map((movie, index) => {
+          let showtext = isExpanded ? movie.description : movie.description.slice(0,200)
           return (
             <div className="carousel-slide" style={contentStyle} key={index}>
               <img src={loki} />
@@ -48,7 +49,12 @@ const Curosel = ({ movieList }) => {
                   {/* <p className="like"><i class="fa-solid fa-thumbs-up"></i>500k likes</p>
                     <p className="unlike"><i class="fa-regular fa-thumbs-down"></i>500k unlikes</p> */}
                 </div>
-                <p className="curosel-description">{movie.description}</p>
+                <p className="curosel-description">{showtext}</p>
+                {movie.description.length > 200 && (
+                  <a onClick={toggleReadMore}>
+                    {isExpanded ? "Read Less" : "Read More"}
+                  </a>
+                )}
               </div>
             </div>
           );
