@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Carousel } from "antd";
-import { useState } from "react";
 import loki from "../../assets/images/loki.png";
 
 const contentStyle = {
