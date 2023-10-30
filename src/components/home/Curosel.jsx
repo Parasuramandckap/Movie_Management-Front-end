@@ -1,6 +1,5 @@
 import React from "react";
 import { Carousel } from "antd";
-import { useState } from "react";
 import loki from "../../assets/images/loki.png";
 
 const contentStyle = {
@@ -44,11 +43,6 @@ const Curosel = ({ movieList }) => {
                     <p className="unlike"><i class="fa-regular fa-thumbs-down"></i>500k unlikes</p> */}
                 </div>
                 <p className="curosel-description">{movie.description}</p>
-                {/* {movie.description.length > maxLength && (
-                  <a onClick={toggleReadMore}>
-                    {isReadMore ? "Read Less" : "Read More"}
-                  </a>
-                )} */}
               </div>
             </div>
           );
