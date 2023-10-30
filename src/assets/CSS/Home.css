@@ -1,10 +1,11 @@
 /* Style the navbar */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap");
 
-
 .home-page {
   background-color: black;
- 
+  max-width: 1366px;
+  width: 100%;
+  height: auto;
 }
 .navbar {
   color: #fff;
@@ -30,7 +31,6 @@
   height: 35px;
   border-radius: 4px;
   border: none;
-
 }
 .search-bar:focus {
   outline: none;
@@ -109,7 +109,6 @@
   font-size: 16px;
   line-height: 36px;
   font-family: "Poppins", sans-serif;
- 
 }
 .overlay-text .add {
   font-size: 16px;
@@ -140,9 +139,8 @@
 }
 .overlay-text .curosel-description {
   max-width: 475px;
-    /* max-height: 55px;
+  /* max-height: 55px;
     overflow: hidden; */
-
 }
 
 /* feature-movie */
@@ -187,7 +185,6 @@
   font-family: "Poppins", sans-serif;
   line-height: 12px;
   color: white;
-
 }
 
 .movie-list .description .reactions {
@@ -206,23 +203,22 @@
 .movie-list {
   cursor: pointer;
 }
-.movie-list .image{
+.movie-list .image {
   max-width: 134px;
-    max-height: 171px;
-    width: 100%;
+  max-height: 171px;
+  width: 100%;
 }
-.movie-list .image img{
+.movie-list .image img {
   width: 100%;
   height: 171px;
 }
-.movie-list:hover .image{
+.movie-list:hover .image {
   opacity: 40%;
 }
 .movie-list .image:hover ~ * {
   visibility: visible;
   transition: 0.1s;
 }
-
 
 .movie-list .description:hover {
   visibility: visible;
@@ -231,7 +227,6 @@
   position: absolute;
   top: 6px;
   right: 6px;
-
 }
 
 /* single movie */
@@ -257,8 +252,6 @@
   width: 60%;
 }
 
-
-
 .ant-modal .ant-modal-content {
   background-color: black;
   border: 1px solid white;
@@ -278,6 +271,9 @@
   align-items: center;
   gap: 40px;
   font-family: "Poppins", sans-serif;
+}
+.required-feild{
+  color: red;
 }
 .movie-details input {
   border-radius: 4px;
@@ -320,33 +316,30 @@ progress {
   justify-content: space-between;
   font-family: "Poppins", sans-serif;
 }
-.uploaded-img{
+.uploaded-img {
   max-width: 131px;
 }
-.uploaded-img .image-upload{
+.uploaded-img .image-upload {
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-items: center;
   padding-top: 10px;
-
 }
 
-.image-upload .image-upload-btn{
+.image-upload .image-upload-btn {
   padding-top: 8px;
   font-family: "Poppins", sans-serif;
 }
-.preview-image{
+.preview-image {
   width: 113px;
   height: 175px;
   border: 1px solid black;
   /* position: absolute; */
-  
 }
-.preview-image img{
+.preview-image img {
   width: 113px;
   height: 175px;
-
 }
 .ant-picker-focused.ant-picker {
   background-color: black;
@@ -373,55 +366,52 @@ progress {
   border-radius: 5px;
 }
 
-.ant-select-single .ant-select-selector{
+.ant-select-single .ant-select-selector {
   background-color: black !important;
   color: white !important;
   border: 1px solid grey !important;
 }
 
-
-
 /* pagination */
 
-.pagination{
+.pagination {
   padding-left: 85px;
 }
 .ant-pagination-item-active a {
   background-color: #1890ff;
   border-color: #1890ff;
-  color: #fff; 
+  color: #fff;
 }
-
 
 .ant-pagination-item:not(.ant-pagination-item-active) a {
-  background-color: #f0f0f0; 
-  border-color: #d9d9d9; 
-  color: #000; 
+  background-color: #f0f0f0;
+  border-color: #d9d9d9;
+  color: #000;
 }
 
-
-.ant-pagination-prev, .ant-pagination-next {
-  background-color: #1890ff; 
-  border-color: #1890ff; 
-  color: #fff; 
+.ant-pagination-prev,
+.ant-pagination-next {
+  background-color: #1890ff;
+  border-color: #1890ff;
+  color: #fff;
 }
 
-
-.ant-pagination-prev-icon, .ant-pagination-next-icon {
-  font-size: 18px; 
+.ant-pagination-prev-icon,
+.ant-pagination-next-icon {
+  font-size: 18px;
 }
 
-
-.ant-pagination-prev:hover, .ant-pagination-next:hover {
-  background-color: #40a9ff; 
-  border-color: #40a9ff; 
+.ant-pagination-prev:hover,
+.ant-pagination-next:hover {
+  background-color: #40a9ff;
+  border-color: #40a9ff;
 }
 
-
-.ant-pagination-prev.ant-pagination-disabled, .ant-pagination-next.ant-pagination-disabled {
-  background-color: #ccc; 
-  border-color: #ccc; 
-  color: #fff; 
+.ant-pagination-prev.ant-pagination-disabled,
+.ant-pagination-next.ant-pagination-disabled {
+  background-color: #ccc;
+  border-color: #ccc;
+  color: #fff;
 }
 
 .ant-picker-dropdown .ant-picker-header {
@@ -432,17 +422,27 @@ progress {
   color: white;
   border: 1px solid white;
 }
-.ant-picker-dropdown .ant-picker-header >button {
+.ant-picker-dropdown .ant-picker-header > button {
   min-width: 1.6em;
   font-size: 14px;
   color: white;
 }
-.ant-picker-dropdown .ant-picker-year-panel .ant-picker-body, :where(.css-dev-only-do-not-override-xu9wm8).ant-picker-dropdown .ant-picker-quarter-panel .ant-picker-body, :where(.css-dev-only-do-not-override-xu9wm8).ant-picker-dropdown .ant-picker-month-panel .ant-picker-body {
+.ant-picker-dropdown .ant-picker-year-panel .ant-picker-body,
+:where(.css-dev-only-do-not-override-xu9wm8).ant-picker-dropdown
+  .ant-picker-quarter-panel
+  .ant-picker-body,
+:where(.css-dev-only-do-not-override-xu9wm8).ant-picker-dropdown
+  .ant-picker-month-panel
+  .ant-picker-body {
   padding: 0 8px;
   background-color: black;
   border: 1px solid white;
 }
-.ant-picker-dropdown .ant-picker-year-panel .ant-picker-cell-inner, :where(.css-dev-only-do-not-override-xu9wm8).ant-picker-dropdown .ant-picker-quarter-panel .ant-picker-cell-inner, .ant-picker-dropdown .ant-picker-month-panel .ant-picker-cell-inner {
+.ant-picker-dropdown .ant-picker-year-panel .ant-picker-cell-inner,
+:where(.css-dev-only-do-not-override-xu9wm8).ant-picker-dropdown
+  .ant-picker-quarter-panel
+  .ant-picker-cell-inner,
+.ant-picker-dropdown .ant-picker-month-panel .ant-picker-cell-inner {
   width: 60px;
   color: white;
 }

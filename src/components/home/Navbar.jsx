@@ -264,23 +264,14 @@ const Navbar = ({ handleAddMovie, handleLogout, handleSearch }) => {
           <form encType="multipart/form-data">
             <div className="body-container">
               <div className="uploaded-img">
-              <input type="file" className="custom-file-input" name="file" id="" onChange={handleImageUpload} placeholder="file upload here" />
-
-                {/* <div className="image-upload">
-                 
-                  <div className="preview-image">
-                    <img src={image}/>
-                  </div>
-                  <p className="image-upload-btn">Upload image</p>
-                </div> */}
-                
+              <input type="file" className="custom-file-input" name="file" id="" onChange={handleImageUpload} placeholder="file upload here" />          
               </div>
               <div className="right-cont">
                 <h5>Movie Details</h5>
                 <div className="movie-details">
                   <div className="top-inputs">
                     <div>
-                      <label htmlFor="movie name">Movie Name</label>
+                      <label htmlFor="movie name">Movie Name <span className="required-feild">*</span></label>
                       <br />
                       <input
                         type="text"
@@ -297,7 +288,7 @@ const Navbar = ({ handleAddMovie, handleLogout, handleSearch }) => {
                     </div>
 
                     <div>
-                      <label htmlFor="movie name">Director</label>
+                      <label htmlFor="movie name">Director <span className="required-feild">*</span></label>
                       <br />
                       <input
                         type="text"
@@ -314,7 +305,7 @@ const Navbar = ({ handleAddMovie, handleLogout, handleSearch }) => {
                     </div>
 
                     <div>
-                      <label htmlFor="movie name">Release Year</label>
+                      <label htmlFor="movie name">Release Year <span className="required-feild">*</span></label>
                       <br />
                       <DatePicker
                         picker="year"
@@ -330,7 +321,7 @@ const Navbar = ({ handleAddMovie, handleLogout, handleSearch }) => {
                   </div>
                   <div className="bottom-inputs">
                     <div>
-                      <label htmlFor="duration">Duration</label>
+                      <label htmlFor="duration">Duration <span className="required-feild">*</span></label>
                       <br />
                       <Row className="hour-row">
                         <Col span={12}>
@@ -387,7 +378,7 @@ const Navbar = ({ handleAddMovie, handleLogout, handleSearch }) => {
                       </p>
                     </div>
                     <div>
-                      <label htmlFor="ratings">Rating</label>
+                      <label htmlFor="ratings">Rating <span className="required-feild">*</span></label>
                       <br />
                       <Rate
                         className="add-movie-rating"
@@ -401,7 +392,7 @@ const Navbar = ({ handleAddMovie, handleLogout, handleSearch }) => {
                       </p>
                     </div>
                     <div className="genre-container">
-                      <label htmlFor="genre">Genre</label>
+                      <label htmlFor="genre">Genre <span className="required-feild">*</span></label>
                       <br />
                       <Space wrap>
                         <Select
@@ -435,7 +426,7 @@ const Navbar = ({ handleAddMovie, handleLogout, handleSearch }) => {
                   </div>
                 </div>
                 <div className="general-details">
-                  <label htmlFor="description">Description</label>
+                  <label htmlFor="description">Description <span className="required-feild">*</span></label>
                   <br />
                   <textarea
                     id=""
