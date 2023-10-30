@@ -4,7 +4,7 @@ import axios from "axios";
 import Navbar from "./Navbar";
 import Curosel from "./Curosel";
 import FeatureMovie from "./Feature_movie";
-import { Pagination, Space, Spin } from "antd";
+import { Pagination, Spin } from "antd";
 
 export default function Home() {
   const [isLoading, setLoading] = useState(true);
@@ -20,7 +20,6 @@ export default function Home() {
   });
 
   useEffect(() => {
-    // fetchData(pagination.current, pagination.pageSize,searchMovie);
     setTimeout(() => {
       const headers = {
         Authorization: `Bearer ${token}`,
@@ -44,28 +43,6 @@ export default function Home() {
         });
     }, 200);
   }, [pagination.current, pagination.pageSize, searchMovie]);
-
-  console.log(pagination);
-  // const fetchData = async (page, pageSize,searchMovie) => {
-  //   try {
-  //     const headers = {
-  //       'Authorization': `Bearer ${token}`,
-  //       'Content-Type': 'application/json',
-  //     };
-  //     const response = await fetch(`http://127.0.0.1:5000/showmovie?limit=${pageSize}&page=${page}&search=${searchMovie}`, { headers });
-  //     const result = await response.json();
-
-  //     setMovieList(result.data);
-  //     setLoading(false)
-  //     setPagination({
-  //       ...pagination,
-  //       total: result.total_records,
-  //     });
-  //   } catch (error) {
-  //     setLoading(false)
-  //     console.error('Error fetching data: ', error);
-  //   }
-  // };
 
   const handleSearch = (filterMovieName) => {
     setSearchMovie(filterMovieName);
@@ -121,27 +98,33 @@ export default function Home() {
 
   return (
     <div className="home-page">
+      {movieList && (
+        <Navbar
+          handleAddMovie={handleAddMovie}
+          handleLogout={Logout}
+          handleSearch={handleSearch}
+        />
+      )}
+      {isLoading && (
+        <Spin tip="Loading" size="large">
+          <div className="content" />
+        </Spin>
+      )}
+      {movieList && <Curosel movieList={movieList} />}
 
-     
-      {movieList &&   <Navbar
-        handleAddMovie={handleAddMovie}
-        handleLogout={Logout}
-        handleSearch={handleSearch}
-      />}
-       {isLoading &&  <Spin tip="Loading" size="large">
-        <div className="content" />
-      </Spin> }
-      {movieList &&  <Curosel movieList={movieList} />}
-      {movieList &&   <FeatureMovie movieList={movieList} handleFavorate={handleFavorate} />}
-      {movieList &&  movieList.length >0 &&  <div className="pagination">
-            <Pagination
-              current={pagination.current}
-              pageSize={pagination.pageSize}
-              total={pagination.total}
-              onChange={handlePageChange}
-            />
-          </div>}
-
+      {movieList && (
+        <FeatureMovie movieList={movieList} handleFavorate={handleFavorate} />
+      )}
+      {movieList && movieList.length > 0 && (
+        <div className="pagination">
+          <Pagination
+            current={pagination.current}
+            pageSize={pagination.pageSize}
+            total={pagination.total}
+            onChange={handlePageChange}
+          />
+        </div>
+      )}
     </div>
   );
 }

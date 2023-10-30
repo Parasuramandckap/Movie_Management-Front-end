@@ -7,11 +7,11 @@ const FeatureMovie = ({ movieList, handleFavorate }) => {
     <div className="fearure-movie">
       <h2 className="feature-title">Featured today</h2>
       <div className="all-movie-list">
+
+        
         {movieList.length === 0 ? (
-         
           <div className="nodata">
             <img src={noDataImage} />
-             {/* <p>Movie is Empty</p> */}
           </div>
         ) : (
           movieList.map((movie, index) => {
@@ -61,6 +61,7 @@ const FeatureMovie = ({ movieList, handleFavorate }) => {
             );
           })
         )}
+
       </div>
       <br />
     </div>

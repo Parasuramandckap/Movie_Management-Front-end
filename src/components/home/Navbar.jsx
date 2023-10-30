@@ -228,9 +228,6 @@ const Navbar = ({ handleAddMovie, handleLogout, handleSearch }) => {
             Add Movie
           </button>
         </div>
-        <div className="profile">
-          <i className="fa-solid fa-user"></i>
-        </div>
         <div className="search">
           <input
             className="search-bar"
@@ -240,6 +237,10 @@ const Navbar = ({ handleAddMovie, handleLogout, handleSearch }) => {
           />
           <i className="fa-solid fa-magnifying-glass search-icon"></i>
         </div>
+        <div className="profile">
+          <i className="fa-solid fa-user"></i>
+        </div>
+        
       </div>
 
       <Modal
