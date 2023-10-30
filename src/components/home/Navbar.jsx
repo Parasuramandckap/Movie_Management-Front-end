@@ -167,7 +167,9 @@ const Navbar = ({ handleAddMovie, handleLogout, handleSearch }) => {
             setDescription("");
             setRating(0);
             setReleaseYear(null);
+            setMovieImage({})
             handleAddMovie(createdMovie);
+
           } else {
             notification.error({
               message: "Error",
