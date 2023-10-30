@@ -455,3 +455,8 @@ progress {
   background-color: black;
 }
 
+.nodata img{
+  width: 100%;
+  height: 500px;
+margin-left: 50%;
+}

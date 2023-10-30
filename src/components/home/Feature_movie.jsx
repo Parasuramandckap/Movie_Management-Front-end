@@ -1,14 +1,18 @@
 import React from "react";
 import "../../assets/CSS/Home.css";
-
+import noDataImage from "../../assets/images/no-data-found.png";
+// import noDataImage from "../../assets/images/no-data-found1.png.gif"
 const FeatureMovie = ({ movieList, handleFavorate }) => {
-  
   return (
     <div className="fearure-movie">
       <h2 className="feature-title">Featured today</h2>
       <div className="all-movie-list">
         {movieList.length === 0 ? (
-          <p>Movie is Empty</p>
+         
+          <div className="nodata">
+            <img src={noDataImage} />
+             {/* <p>Movie is Empty</p> */}
+          </div>
         ) : (
           movieList.map((movie, index) => {
             return (
@@ -23,8 +27,8 @@ const FeatureMovie = ({ movieList, handleFavorate }) => {
                   <i
                     className={`${
                       movie.is_favourite
-                        ? "fa-solid fa-heart"
-                        : "fa-regular fa-heart"
+                        ? "fa-regular fa-heart" 
+                        : "fa-solid fa-heart"
                     }`}
                     style={{ color: "#ff0000" }}
                   ></i>
@@ -49,8 +53,7 @@ const FeatureMovie = ({ movieList, handleFavorate }) => {
                     </p>
                   </div>
 
-                  <div className="reactions">
-                  </div>
+                  <div className="reactions"></div>
                 </div>
               </div>
             );
