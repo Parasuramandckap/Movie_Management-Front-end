@@ -10,7 +10,16 @@ const contentStyle = {
   background: "#000000",
 };
 
+
+
 const Curosel = ({ movieList }) => {
+  //readmore and read less
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const toggleReadMore = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   return (
     <div className="curosel">
       <Carousel effect="fade">
