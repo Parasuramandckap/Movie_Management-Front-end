@@ -28,7 +28,7 @@ const FeatureMovie = ({ movieList, handleFavorate }) => {
                 <div className="favorate" onClick={() => handleFavorate(movie)}>
                   <i
                     className={`${
-                      movie.is_favourite
+                      movie.is_favourite === 0
                         ? "fa-regular fa-heart" 
                         : "fa-solid fa-heart"
                     }`}
