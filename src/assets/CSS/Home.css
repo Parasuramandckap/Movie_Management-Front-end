@@ -377,6 +377,7 @@ progress {
 }
 
 
+
 /* pagination */
 
 .pagination{
@@ -419,3 +420,35 @@ progress {
   border-color: #ccc; 
   color: #fff; 
 }
+
+.ant-picker-dropdown .ant-picker-header {
+  display: flex;
+  padding: 0 8px;
+  border-bottom: 1px solid rgba(5, 5, 5, 0.06);
+  background: black;
+  color: white;
+  border: 1px solid white;
+}
+.ant-picker-dropdown .ant-picker-header >button {
+  min-width: 1.6em;
+  font-size: 14px;
+  color: white;
+}
+.ant-picker-dropdown .ant-picker-year-panel .ant-picker-body, :where(.css-dev-only-do-not-override-xu9wm8).ant-picker-dropdown .ant-picker-quarter-panel .ant-picker-body, :where(.css-dev-only-do-not-override-xu9wm8).ant-picker-dropdown .ant-picker-month-panel .ant-picker-body {
+  padding: 0 8px;
+  background-color: black;
+  border: 1px solid white;
+}
+.ant-picker-dropdown .ant-picker-year-panel .ant-picker-cell-inner, :where(.css-dev-only-do-not-override-xu9wm8).ant-picker-dropdown .ant-picker-quarter-panel .ant-picker-cell-inner, .ant-picker-dropdown .ant-picker-month-panel .ant-picker-cell-inner {
+  width: 60px;
+  color: white;
+}
+
+.ant-select-dropdown .ant-select-item-option {
+  display: flex;
+  color: white;
+}
+.rc-virtual-list-holder-inner {
+  background-color: black;
+}
+
